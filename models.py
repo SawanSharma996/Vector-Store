@@ -1,8 +1,9 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, Date
 from sqlalchemy.orm import relationship
 from database import Base
-import datetime
-from datetime import timezone  # Import timezone module
+from datetime import datetime, date
+from database import engine
+from sqlalchemy import text
 
 class User(Base):
     __tablename__ = "users"
@@ -17,5 +18,8 @@ class PDF(Base):
     user_id = Column(Integer, ForeignKey("users.id"))
     filename = Column(String, index=True)
     description = Column(String, nullable=True)
-    upload_date = Column(Date, default=lambda: datetime.date.today(), index=True)  # Set default value to today's date
-    user = relationship("User", back_populates="pdfs") 
+    upload_date = Column(Date, default=datetime.now().date())
+    status = Column(String, default="processed")  # New status field: pending, processed, error
+    error_message = Column(String, nullable=True)  # To store error details
+    user = relationship("User", back_populates="pdfs")
+

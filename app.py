@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, Depends, HTTPException
+from fastapi import FastAPI, UploadFile, File, Depends, HTTPException, BackgroundTasks
 from sqlalchemy.orm import Session
 from database import get_db, engine, Base
 from models import PDF, User
@@ -10,10 +10,12 @@ import os
 import config
 from openai import OpenAI
 from fastapi.security import OAuth2PasswordRequestForm
-from fastapi.responses import FileResponse
+from fastapi.responses import FileResponse, JSONResponse
 from datetime import datetime
 from pydantic import BaseModel
 import pandas as pd
+import tempfile
+import asyncio
 
 app = FastAPI()
 Base.metadata.create_all(bind=engine)
@@ -59,56 +61,69 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
         raise HTTPException(status_code=401, detail="Incorrect username or password")
     access_token = create_access_token(data={"sub": str(user.id)})
     return {"access_token": access_token, "token_type": "bearer"}
+    
+
 
 # PDF Management Endpoints
 @app.post("/upload")
 async def upload_pdf(
+    background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
     description: str = None,
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
 ):
-    # Check if user has already uploaded 10 PDFs in this batch
-    recent_uploads = db.query(PDF).filter(
-        PDF.user_id == current_user.id,
-        PDF.upload_date == datetime.today().date()
-    ).count()
+    # Create a unique temporary file
+    with tempfile.NamedTemporaryFile(delete=False, suffix=f"_{file.filename}") as temp_file:
+        temp_path = temp_file.name
+        # Read file in chunks to avoid memory issues with large files
+        chunk_size = 1024 * 1024  # 1MB chunks
+        while chunk := await file.read(chunk_size):
+            temp_file.write(chunk)
     
-    
-
-    temp_path = f"temp_{file.filename}"
     try:
-        with open(temp_path, "wb") as f:
-            f.write(file.file.read())
-        
-        text = extract_text_from_pdf(temp_path)
-        chunks = split_text_into_chunks(text)
-        openai_client = OpenAI(api_key=config.OPENAI_API_KEY)
-        embeddings = generate_embeddings(chunks, openai_client)
-        
+        # First create the PDF record with pending status
         pdf = PDF(
             user_id=current_user.id,
             filename=file.filename,
-            description=description
+            description=description,
+            status="pending"  # Add this status field to your PDF model
         )
         db.add(pdf)
         db.commit()
         db.refresh(pdf)
         
-        qdrant_client = QdrantClient(url=config.QDRANT_URL)
-        store_in_qdrant(chunks, embeddings, pdf.id, current_user.id, file.filename, description, qdrant_client)
+        # Schedule the processing to happen in the background
+        background_tasks.add_task(
+            process_pdf_in_background,
+            temp_path,
+            file.filename,
+            description,
+            current_user.id,
+            pdf.id
+        )
         
-        return {"message": "PDF uploaded successfully", "pdf_id": pdf.id}
-    
-    finally:
+        return JSONResponse(
+            status_code=202,  # Accepted
+            content={
+                "message": "PDF upload in progress",
+                "pdf_id": pdf.id,
+                "status": "pending"
+            }
+        )
+    except Exception as e:
+        # If something goes wrong before the background task starts
         if os.path.exists(temp_path):
             os.remove(temp_path)
+        raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")
 
 @app.get("/pdfs")
 def list_pdfs(db: Session = Depends(get_db), current_user = Depends(get_current_user)):
     pdfs = db.query(PDF).filter(PDF.user_id == current_user.id).all()
     return [{"id": pdf.id, "filename": pdf.filename, "description": pdf.description, 
-             "upload_date": pdf.upload_date.isoformat()} for pdf in pdfs]
+             "upload_date": pdf.upload_date.isoformat(), 
+             "status": pdf.status, 
+             "error_message": pdf.error_message} for pdf in pdfs]
 
 @app.put("/pdfs/{pdf_id}")
 def update_pdf(
@@ -154,6 +169,7 @@ def update_pdf(
         )
 
     return {"message": "PDF updated successfully"}
+
 @app.delete("/pdfs/{pdf_id}")
 def delete_pdf(pdf_id: int, db: Session = Depends(get_db), 
                current_user = Depends(get_current_user)):
@@ -175,3 +191,107 @@ def delete_pdf(pdf_id: int, db: Session = Depends(get_db),
     db.delete(pdf)
     db.commit()
     return {"message": "PDF deleted successfully"}
+
+# Update the process_pdf_in_background function to be asynchronous and handle large files better
+async def process_pdf_in_background(
+    temp_path: str,
+    filename: str,
+    description: str,
+    user_id: int,
+    pdf_id: int
+):
+    db = None
+    try:
+        # Update status to "processing" to give more detailed feedback
+        db = next(get_db())
+        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
+        if pdf:
+            pdf.status = "processing"
+            db.commit()
+        
+        # Extract text with progress tracking
+        text = await extract_text_from_pdf(temp_path)
+        
+        # Update status to show progress
+        db = next(get_db())
+        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
+        if pdf:
+            pdf.status = "chunking"
+            db.commit()
+            
+        chunks = split_text_into_chunks(text)
+        
+        # Update status again
+        db = next(get_db())
+        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
+        if pdf:
+            pdf.status = "embedding"
+            db.commit()
+            
+        openai_client = OpenAI(api_key=config.OPENAI_API_KEY)
+        embeddings = await generate_embeddings(chunks, openai_client)
+        
+        # Final embedding storage
+        db = next(get_db())
+        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
+        if pdf:
+            pdf.status = "storing"
+            db.commit()
+            
+        qdrant_client = QdrantClient(url=config.QDRANT_URL)
+        
+        # Store in smaller batches
+        batch_size = 100
+        for i in range(0, len(chunks), batch_size):
+            batch_chunks = chunks[i:i+batch_size]
+            batch_embeddings = embeddings[i:i+batch_size]
+            store_in_qdrant(
+                batch_chunks, 
+                batch_embeddings, 
+                pdf_id, 
+                user_id, 
+                filename, 
+                description, 
+                qdrant_client
+            )
+            await asyncio.sleep(0.1)  # Give the event loop a chance to process other tasks
+        
+        # Update status in database
+        db = next(get_db())
+        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
+        if pdf:
+            pdf.status = "processed"
+            db.commit()
+            
+    except Exception as e:
+        # Log the error
+        print(f"Error processing PDF {filename}: {str(e)}")
+        # Update status in database
+        if db is None:
+            db = next(get_db())
+        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
+        if pdf:
+            pdf.status = "error"
+            pdf.error_message = str(e)
+            db.commit()
+    finally:
+        # Clean up the temp file
+        if os.path.exists(temp_path):
+            os.remove(temp_path)
+
+# Add a status endpoint to check processing status
+@app.get("/pdfs/{pdf_id}/status")
+async def get_pdf_status(
+    pdf_id: int,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    pdf = db.query(PDF).filter(PDF.id == pdf_id, PDF.user_id == current_user.id).first()
+    if not pdf:
+        raise HTTPException(status_code=404, detail="PDF not found")
+        
+    return {
+        "pdf_id": pdf.id,
+        "status": pdf.status,
+        "error_message": pdf.error_message if hasattr(pdf, "error_message") else None
+    }

@@ -450,7 +450,7 @@
                         <div class="file-info">
                             <h3>Drag & Drop your PDFs here</h3>
                             <p>or click to browse files</p>
-                            <p><small>You can upload up to 10 PDFs at once</small></p>
+                            <p><small>You can upload up to 50 PDFs at once</small></p>
                         </div>
                         <input type="file" name="files"  multiple required>
                     </div>
@@ -466,6 +466,10 @@
 
             <div class="card">
                 <h2><i class="fas fa-file-alt"></i> Your PDFs</h2>
+                <div class="form-group">
+                    <input type="text" id="pdf-search" placeholder="Search PDFs by name or description..." 
+                           style="margin-bottom: 15px;">
+                </div>
                 <div id="pdf-table-container">
                     <table>
                         <thead>
@@ -628,64 +632,114 @@
             e.preventDefault();
             const files = e.target.files.files;
             
-
             if (files.length === 0) {
                 showToast("Please select at least one PDF file", "error");
                 return;
             }
 
             const description = e.target.description.value;
-            const uploadPromises = [];
-
+            
             // Show loading state
             const submitBtn = e.target.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
             submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
             submitBtn.disabled = true;
+            
+            const uploadedPdfIds = [];
+            let failedUploads = 0;
 
             for (const file of files) {
                 const formData = new FormData();
                 formData.append("file", file);
-                formData.append("description", description);
+                if (description) {
+                    formData.append("description", description);
+                }
                 
-                uploadPromises.push(
-                    fetch("/upload", {
+                try {
+                    const response = await fetch("/upload", {
                         method: "POST",
                         headers: { "Authorization": `Bearer ${token}` },
                         body: formData
-                    })
-                );
-            }
-
-            try {
-                const results = await Promise.all(uploadPromises);
-                const allSuccessful = results.every(response => response.ok);
-                
-                if (allSuccessful) {
-                    showToast(`Successfully uploaded ${files.length} ${files.length === 1 ? 'file' : 'files'}`);
-                    fetchPDFs();
-                    e.target.reset();
+                    });
                     
-                    // Reset file upload visual
-                    const fileInfo = fileUpload.querySelector('.file-info');
-                    fileInfo.innerHTML = `
-                        <h3>Drag & Drop your PDFs here</h3>
-                        <p>or click to browse files</p>
-                        <p><small>You can upload up to 10 PDFs at once</small></p>
-                    `;
-                    fileUpload.style.borderColor = 'var(--green)';
-                } else {
-                    showToast("Some uploads failed", "error");
+                    if (response.ok) {
+                        const data = await response.json();
+                        uploadedPdfIds.push(data.pdf_id);
+                    } else {
+                        failedUploads++;
+                    }
+                } catch (error) {
+                    failedUploads++;
+                    console.error(`Error uploading ${file.name}:`, error);
                 }
-            } catch (error) {
-                showToast("Upload failed", "error");
-                console.error(error);
-            } finally {
-                // Reset button state
-                submitBtn.innerHTML = originalBtnText;
-                submitBtn.disabled = false;
+            }
+            
+            // Reset form and file upload visual
+            e.target.reset();
+            const fileInfo = fileUpload.querySelector('.file-info');
+            fileInfo.innerHTML = `
+                <h3>Drag & Drop your PDFs here</h3>
+                <p>or click to browse files</p>
+                <p><small>You can upload up to 10 PDFs at once</small></p>
+            `;
+            fileUpload.style.borderColor = 'var(--green)';
+            
+            // Reset button state
+            submitBtn.innerHTML = originalBtnText;
+            submitBtn.disabled = false;
+            
+            if (uploadedPdfIds.length > 0) {
+                showToast(`Uploaded ${uploadedPdfIds.length} files. Processing in background.`);
+                
+                // Add status monitoring for uploaded PDFs
+                monitorPdfProcessing(uploadedPdfIds);
+                
+                // Refresh the list to show pending PDFs
+                fetchPDFs();
+            }
+            
+            if (failedUploads > 0) {
+                showToast(`${failedUploads} uploads failed`, "error");
             }
         });
+
+        // Add function to monitor PDF processing status
+        async function monitorPdfProcessing(pdfIds) {
+            const checkStatus = async () => {
+                let allCompleted = true;
+                
+                for (const pdfId of pdfIds) {
+                    try {
+                        const response = await fetch(`/pdfs/${pdfId}/status`, {
+                            headers: { "Authorization": `Bearer ${token}` }
+                        });
+                        
+                        if (response.ok) {
+                            const data = await response.json();
+                            if (data.status === "pending") {
+                                allCompleted = false;
+                            } else if (data.status === "error") {
+                                showToast(`Error processing PDF: ${data.error_message || "Unknown error"}`, "error");
+                            }
+                        }
+                    } catch (error) {
+                        console.error(`Error checking status for PDF ${pdfId}:`, error);
+                    }
+                }
+                
+                if (allCompleted) {
+                    showToast("All PDFs processed successfully!");
+                    fetchPDFs();
+                    return;
+                }
+                
+                // Check again after 3 seconds
+                setTimeout(checkStatus, 3000);
+            };
+            
+            // Start checking
+            setTimeout(checkStatus, 3000);
+        }
 
         // Format date
         function formatDate(dateString) {
@@ -693,9 +747,7 @@
             return date.toLocaleDateString('en-US', { 
                 year: 'numeric', 
                 month: 'short', 
-                day: 'numeric',
-                hour: '2-digit',
-                minute: '2-digit'
+                day: 'numeric'
             });
         }
 
@@ -764,17 +816,25 @@
                     tr.style.animationDelay = `${index * 0.05}s`;
                     tr.classList.add('animate-fade-in');
                     
+                    // Add status indicator
+                    const statusBadge = pdf.status === "pending" 
+                        ? `<span class="badge" style="background-color: orange;"><i class="fas fa-spinner fa-spin"></i> Processing</span>`
+                        : pdf.status === "error"
+                            ? `<span class="badge" style="background-color: #f44336;"><i class="fas fa-exclamation-circle"></i> Error</span>`
+                            : `<span class="badge" style="background-color: var(--green);"><i class="fas fa-check"></i> Processed</span>`;
+                    
                     tr.innerHTML = `
                         <td>
                             <div style="display: flex; align-items: center; gap: 10px;">
                                 <i class="fas fa-file-pdf" style="color: var(--green);"></i>
                                 ${pdf.filename}
+                                ${statusBadge}
                             </div>
                         </td>
                         <td>${pdf.description || "<em>No description</em>"}</td>
                         <td>${formatDate(pdf.upload_date)}</td>
                         <td class="actions">
-                            <button onclick="viewPDF(${pdf.id})" class="btn btn-view">
+                            <button onclick="viewPDF(${pdf.id})" class="btn btn-view" ${pdf.status !== "processed" ? "disabled" : ""}>
                                 <i class="fas fa-eye"></i> View
                             </button>
                             <button onclick="updatePDF(${pdf.id})" class="btn btn-update">
@@ -847,6 +907,38 @@
                 }
             }
         }
+
+        // Fix the search event listener
+        document.getElementById("pdf-search").addEventListener("input", function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const rows = document.querySelectorAll("#pdf-list tr");
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                const filename = row.querySelector("td:nth-child(1)").textContent.toLowerCase();
+                const description = row.querySelector("td:nth-child(2)").textContent.toLowerCase();
+                const shouldShow = filename.includes(searchTerm) || description.includes(searchTerm);
+                
+                row.style.display = shouldShow ? "" : "none";
+                if (shouldShow) visibleCount++;
+            });
+            
+            // Show empty state if no results
+            const emptyState = document.getElementById("empty-state");
+            const tableContainer = document.getElementById("pdf-table-container");
+            
+            if (visibleCount === 0) {
+                emptyState.style.display = "block";
+                emptyState.querySelector("h3").textContent = "No PDFs match your search";
+                emptyState.querySelector("p").textContent = "Try a different search term";
+                tableContainer.style.display = "block";
+                document.querySelector("table").style.display = "none";
+            } else {
+                emptyState.style.display = "none";
+                document.querySelector("table").style.display = "table";
+                tableContainer.style.display = "block";
+            }
+        });
 
         // Initial UI update
         updateUI();
