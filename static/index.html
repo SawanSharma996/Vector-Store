@@ -290,13 +290,17 @@
         }
         
         .badge {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
             padding: 4px 8px;
             border-radius: 20px;
             font-size: 12px;
             font-weight: 500;
-            background-color: var(--green);
-            color: white;
+        }
+        
+        .badge i {
+            font-size: 10px;
         }
         
         .toast {
@@ -379,6 +383,63 @@
         .sortable i {
             margin-left: 5px;
         }
+
+        #pagination-controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 5px;
+            margin-top: 20px;
+        }
+
+        #pagination-controls .btn {
+            padding: 5px 10px;
+            border-radius: 5px;
+            background-color: var(--light-green);
+            color: var(--white);
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #pagination-controls .btn:hover {
+            background-color: var(--dark-green);
+        }
+
+        #pagination-controls .btn:disabled {
+            background-color: var(--gray);
+            cursor: not-allowed;
+        }
+
+        .collection-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .collection-actions select {
+            flex: 1;
+            padding: 8px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px 15px;
+            border-radius: 6px;
+            border: 1px solid #ddd;
+            background-color: var(--gray);
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            transition: var(--transition);
+        }
+
+        select:focus {
+            outline: none;
+            border-color: var(--green);
+            box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+        }
     </style>
 </head>
 <body>
@@ -458,6 +519,21 @@
                         <label for="description">Description</label>
                         <input type="text" id="description" name="description" placeholder="Add a description (applies to all files)">
                     </div>
+                    <div class="form-group">
+                        <label for="collection">Collection (optional)</label>
+                        <select id="collection" name="collection">
+                            <option value="">Default Collection</option>
+                            <!-- Collections will be populated dynamically -->
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="collection-filter">Filter by Collection</label>
+                        <select id="collection-filter" onchange="filterByCollection()">
+                            <option value="">All Collections</option>
+                            <option value="default">Default Collection</option>
+                            <!-- Other collections will be populated dynamically -->
+                        </select>
+                    </div>
                     <button type="submit" class="btn">
                         <i class="fas fa-upload"></i> Upload PDFs
                     </button>
@@ -492,6 +568,26 @@
                 </div>
             </div>
         </div>
+
+        <!-- Collection Management Section -->
+        <div class="card">
+            <h2><i class="fas fa-layer-group"></i> Collections</h2>
+            <div class="form-group">
+                <label for="collection-name">New Collection Name</label>
+                <input type="text" id="collection-name" placeholder="Enter collection name">
+            </div>
+            <div class="form-group">
+                <label for="collection-description">Description (optional)</label>
+                <input type="text" id="collection-description" placeholder="Enter collection description">
+            </div>
+            <button onclick="createCollection()" class="btn">
+                <i class="fas fa-plus"></i> Create Collection
+            </button>
+            
+            <div id="collections-list" style="margin-top: 20px;">
+                <!-- Collections will be listed here -->
+            </div>
+        </div>
     </div>
 
     <div id="toast" class="toast">
@@ -502,6 +598,9 @@
     <script>
         let token = localStorage.getItem("token");
         let currentUsername = localStorage.getItem("username");
+        let currentPage = 1;
+        const itemsPerPage = 20;
+        let currentCollection = '';
 
         // Toast notification function
         function showToast(message, type = 'success') {
@@ -528,6 +627,8 @@
                 document.getElementById("user-info").style.display = "flex";
                 document.getElementById("username").textContent = currentUsername || "User";
                 fetchPDFs();
+                fetchCollections();
+                populateCollectionDropdown();
             } else {
                 document.getElementById("user-info").style.display = "none";
             }
@@ -631,14 +732,14 @@
         document.getElementById("upload-form").addEventListener("submit", async (e) => {
             e.preventDefault();
             const files = e.target.files.files;
+            const description = e.target.description.value;
+            const collection = document.getElementById('collection').value;
             
             if (files.length === 0) {
                 showToast("Please select at least one PDF file", "error");
                 return;
             }
 
-            const description = e.target.description.value;
-            
             // Show loading state
             const submitBtn = e.target.querySelector('button[type="submit"]');
             const originalBtnText = submitBtn.innerHTML;
@@ -651,9 +752,8 @@
             for (const file of files) {
                 const formData = new FormData();
                 formData.append("file", file);
-                if (description) {
-                    formData.append("description", description);
-                }
+                formData.append("description", description || "");
+                formData.append("collection", collection || "");
                 
                 try {
                     const response = await fetch("/upload", {
@@ -778,32 +878,35 @@
         // Update the fetchPDFs function
         async function fetchPDFs() {
             try {
-                const response = await fetch("/pdfs", {
-                    headers: { "Authorization": `Bearer ${token}` }
-                });
+                const collectionParam = currentCollection ? `&collection=${encodeURIComponent(currentCollection)}` : '';
+                const response = await fetch(
+                    `/pdfs?limit=${itemsPerPage}&offset=${(currentPage - 1) * itemsPerPage}${collectionParam}`,
+                    {
+                        headers: { "Authorization": `Bearer ${token}` }
+                    }
+                );
                 
                 if (!response.ok) {
                     throw new Error("Failed to fetch PDFs");
                 }
                 
-                const pdfs = await response.json();
+                const data = await response.json();
+                const pdfs = data.pdfs;
+                const totalCount = data.total_count;
                 const list = document.getElementById("pdf-list");
                 const emptyState = document.getElementById("empty-state");
                 const tableContainer = document.getElementById("pdf-table-container");
-                
-                // Sort PDFs based on current sort settings
-                pdfs.sort((a, b) => {
-                    const dateA = new Date(a.upload_date);
-                    const dateB = new Date(b.upload_date);
-                    return currentSort.direction === 'asc' 
-                        ? dateA - dateB 
-                        : dateB - dateA;
-                });
                 
                 list.innerHTML = "";
                 
                 if (pdfs.length === 0) {
                     emptyState.style.display = "block";
+                    emptyState.querySelector("h3").textContent = currentCollection 
+                        ? `No PDFs in collection "${currentCollection}"` 
+                        : "No PDFs found";
+                    emptyState.querySelector("p").textContent = currentCollection 
+                        ? "Upload PDFs to this collection" 
+                        : "Upload your first PDF to get started";
                     tableContainer.style.display = "none";
                     return;
                 }
@@ -816,12 +919,26 @@
                     tr.style.animationDelay = `${index * 0.05}s`;
                     tr.classList.add('animate-fade-in');
                     
+                    const collectionBadge = pdf.collection 
+                        ? `<span class="badge" style="background-color: var(--dark-green);">
+                             <i class="fas fa-layer-group"></i> ${pdf.collection}
+                           </span>`
+                        : `<span class="badge" style="background-color: var(--gray); color: var(--black);">
+                             <i class="fas fa-layer-group"></i> Default Collection
+                           </span>`;
+                    
                     // Add status indicator
                     const statusBadge = pdf.status === "pending" 
-                        ? `<span class="badge" style="background-color: orange;"><i class="fas fa-spinner fa-spin"></i> Processing</span>`
+                        ? `<span class="badge" style="background-color: orange;">
+                             <i class="fas fa-spinner fa-spin"></i> Processing
+                           </span>`
                         : pdf.status === "error"
-                            ? `<span class="badge" style="background-color: #f44336;"><i class="fas fa-exclamation-circle"></i> Error</span>`
-                            : `<span class="badge" style="background-color: var(--green);"><i class="fas fa-check"></i> Processed</span>`;
+                            ? `<span class="badge" style="background-color: #f44336;">
+                                 <i class="fas fa-exclamation-circle"></i> Error
+                               </span>`
+                            : `<span class="badge" style="background-color: var(--green);">
+                                 <i class="fas fa-check"></i> Processed
+                               </span>`;
                     
                     tr.innerHTML = `
                         <td>
@@ -829,6 +946,7 @@
                                 <i class="fas fa-file-pdf" style="color: var(--green);"></i>
                                 ${pdf.filename}
                                 ${statusBadge}
+                                ${collectionBadge}
                             </div>
                         </td>
                         <td>${pdf.description || "<em>No description</em>"}</td>
@@ -847,11 +965,71 @@
                     `;
                     list.appendChild(tr);
                 });
+
+                // Add pagination controls
+                const paginationControls = document.getElementById("pagination-controls");
+                paginationControls.innerHTML = "";
+                const totalPages = Math.ceil(totalCount / itemsPerPage);
+                const startItem = (currentPage - 1) * itemsPerPage + 1;
+                const endItem = Math.min(currentPage * itemsPerPage, totalCount);
+
+                // Display current range
+                const rangeInfo = document.createElement("div");
+                rangeInfo.textContent = `Showing ${startItem} to ${endItem} of ${totalCount} documents.`;
+                rangeInfo.style.marginBottom = "10px";
+                paginationControls.appendChild(rangeInfo);
+
+                // Previous button
+                const prevButton = document.createElement("button");
+                prevButton.textContent = "«";
+                prevButton.className = "btn";
+                prevButton.disabled = currentPage === 1;
+                prevButton.addEventListener("click", () => {
+                    currentPage--;
+                    fetchPDFs();
+                });
+                paginationControls.appendChild(prevButton);
+
+                // Page buttons
+                for (let i = 1; i <= totalPages; i++) {
+                    const pageButton = document.createElement("button");
+                    pageButton.textContent = i;
+                    pageButton.className = "btn";
+                    if (i === currentPage) {
+                        pageButton.disabled = true;
+                    }
+                    pageButton.addEventListener("click", () => {
+                        currentPage = i;
+                        fetchPDFs();
+                    });
+                    paginationControls.appendChild(pageButton);
+                }
+
+                // Next button
+                const nextButton = document.createElement("button");
+                nextButton.textContent = "»";
+                nextButton.className = "btn";
+                nextButton.disabled = currentPage === totalPages;
+                nextButton.addEventListener("click", () => {
+                    currentPage++;
+                    fetchPDFs();
+                });
+                paginationControls.appendChild(nextButton);
             } catch (error) {
                 showToast("Failed to load PDFs", "error");
                 console.error(error);
             }
         }
+
+        // Add pagination controls container
+        document.addEventListener("DOMContentLoaded", () => {
+            const tableContainer = document.getElementById("pdf-table-container");
+            const paginationControls = document.createElement("div");
+            paginationControls.id = "pagination-controls";
+            paginationControls.style.marginTop = "20px";
+            paginationControls.style.textAlign = "center";
+            tableContainer.parentNode.insertBefore(paginationControls, tableContainer.nextSibling);
+        });
 
         // View PDF
         function viewPDF(pdfId) {
@@ -939,6 +1117,178 @@
                 tableContainer.style.display = "block";
             }
         });
+
+        // Collection Management Functions
+        async function createCollection() {
+            const name = document.getElementById('collection-name').value;
+            const description = document.getElementById('collection-description').value;
+            
+            if (!name) {
+                showToast("Please enter a collection name", "error");
+                return;
+            }
+            
+            try {
+                const response = await fetch('/collections', {
+                    method: 'POST',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ name, description })
+                });
+                
+                if (response.ok) {
+                    showToast("Collection created successfully");
+                    fetchCollections();
+                    document.getElementById('collection-name').value = '';
+                    document.getElementById('collection-description').value = '';
+                } else {
+                    const error = await response.json();
+                    showToast(error.detail || "Failed to create collection", "error");
+                }
+            } catch (error) {
+                showToast("Connection error", "error");
+            }
+        }
+
+        async function fetchCollections() {
+            try {
+                const response = await fetch('/collections', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                if (response.ok) {
+                    const collections = await response.json();
+                    const listElement = document.getElementById('collections-list');
+                    
+                    if (collections.length === 0) {
+                        listElement.innerHTML = `
+                            <div class="empty-state">
+                                <i class="fas fa-layer-group"></i>
+                                <h3>No collections yet</h3>
+                                <p>Create your first collection to get started</p>
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    listElement.innerHTML = `
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Documents</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${collections.map(collection => `
+                                    <tr>
+                                        <td>${collection.name}</td>
+                                        <td>${collection.vectors_count}</td>
+                                        <td class="actions">
+                                            <button onclick="deleteCollection('${collection.name}')" class="btn btn-delete">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    `;
+                }
+            } catch (error) {
+                showToast("Failed to fetch collections", "error");
+            }
+        }
+
+        async function deleteCollection(name) {
+            if (!confirm(`Are you sure you want to delete collection "${name}"?`)) {
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/collections/${name}`, {
+                    method: 'DELETE',
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                if (response.ok) {
+                    showToast("Collection deleted successfully");
+                    fetchCollections();
+                } else {
+                    showToast("Failed to delete collection", "error");
+                }
+            } catch (error) {
+                showToast("Connection error", "error");
+            }
+        }
+
+        // Add collection options to PDF actions
+        function addCollectionActions(pdfId) {
+            return `
+                <div class="collection-actions">
+                    <select id="collection-select-${pdfId}">
+                        <option value="">Select Collection</option>
+                        ${collections.map(c => `
+                            <option value="${c.name}">${c.name}</option>
+                        `).join('')}
+                    </select>
+                    <button onclick="addPdfToCollection(${pdfId})" class="btn btn-accent">
+                        <i class="fas fa-plus"></i> Add to Collection
+                    </button>
+                </div>
+            `;
+        }
+
+        // Add this function to populate the collection dropdown
+        async function populateCollectionDropdown() {
+            try {
+                const response = await fetch('/collections', {
+                    headers: { 'Authorization': `Bearer ${token}` }
+                });
+                
+                if (response.ok) {
+                    const collections = await response.json();
+                    
+                    // Update upload form dropdown
+                    const uploadSelect = document.getElementById('collection');
+                    uploadSelect.innerHTML = '<option value="">Default Collection</option>';
+                    
+                    // Update filter dropdown
+                    const filterSelect = document.getElementById('collection-filter');
+                    filterSelect.innerHTML = `
+                        <option value="">All Collections</option>
+                        <option value="default">Default Collection</option>
+                    `;
+                    
+                    collections.forEach(collection => {
+                        // Add to upload dropdown
+                        const uploadOption = document.createElement('option');
+                        uploadOption.value = collection.name;
+                        uploadOption.textContent = collection.name;
+                        uploadSelect.appendChild(uploadOption);
+                        
+                        // Add to filter dropdown
+                        const filterOption = document.createElement('option');
+                        filterOption.value = collection.name;
+                        filterOption.textContent = collection.name;
+                        filterSelect.appendChild(filterOption);
+                    });
+                }
+            } catch (error) {
+                console.error('Failed to fetch collections:', error);
+            }
+        }
+
+        // Add function to filter by collection
+        function filterByCollection() {
+            const select = document.getElementById('collection-filter');
+            currentCollection = select.value;
+            currentPage = 1; // Reset to first page
+            fetchPDFs();
+        }
 
         // Initial UI update
         updateUI();

@@ -22,4 +22,5 @@ class PDF(Base):
     status = Column(String, default="processed")  # New status field: pending, processed, error
     error_message = Column(String, nullable=True)  # To store error details
     user = relationship("User", back_populates="pdfs")
+    collection = Column(String)
 

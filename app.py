@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File, Depends, HTTPException, BackgroundTasks
+from fastapi import FastAPI, UploadFile, File, Depends, HTTPException, BackgroundTasks, Query, Form
 from sqlalchemy.orm import Session
 from database import get_db, engine, Base
 from models import PDF, User
@@ -16,12 +16,22 @@ from pydantic import BaseModel
 import pandas as pd
 import tempfile
 import asyncio
+from typing import List
+from sqlalchemy import or_
 
 app = FastAPI()
 Base.metadata.create_all(bind=engine)
 
 # Add this class definition
 class UpdateDescription(BaseModel):
+    description: str
+
+# Add these new models
+class CollectionCreate(BaseModel):
+    name: str
+    description: str = None
+
+class CollectionUpdate(BaseModel):
     description: str
 
 @app.get("/")
@@ -69,61 +79,96 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
 async def upload_pdf(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
-    description: str = None,
+    description: str = Form(None),
+    collection: str = Form(None),  # Use Form to get the collection
     db: Session = Depends(get_db),
     current_user = Depends(get_current_user)
 ):
-    # Create a unique temporary file
+    print(f"Received upload request with collection: {collection}")  # Debug print
+    
     with tempfile.NamedTemporaryFile(delete=False, suffix=f"_{file.filename}") as temp_file:
         temp_path = temp_file.name
-        # Read file in chunks to avoid memory issues with large files
         chunk_size = 1024 * 1024  # 1MB chunks
         while chunk := await file.read(chunk_size):
             temp_file.write(chunk)
     
     try:
-        # First create the PDF record with pending status
+        # Create PDF record with collection
         pdf = PDF(
             user_id=current_user.id,
             filename=file.filename,
             description=description,
-            status="pending"  # Add this status field to your PDF model
+            status="pending",
+            collection=collection  # Set the collection
         )
         db.add(pdf)
         db.commit()
         db.refresh(pdf)
         
-        # Schedule the processing to happen in the background
+        # Schedule processing
         background_tasks.add_task(
             process_pdf_in_background,
             temp_path,
             file.filename,
             description,
             current_user.id,
-            pdf.id
+            pdf.id,
+            collection
         )
         
         return JSONResponse(
-            status_code=202,  # Accepted
+            status_code=202,
             content={
                 "message": "PDF upload in progress",
                 "pdf_id": pdf.id,
-                "status": "pending"
+                "status": "pending",
+                "collection": collection
             }
         )
     except Exception as e:
-        # If something goes wrong before the background task starts
         if os.path.exists(temp_path):
             os.remove(temp_path)
         raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")
 
 @app.get("/pdfs")
-def list_pdfs(db: Session = Depends(get_db), current_user = Depends(get_current_user)):
-    pdfs = db.query(PDF).filter(PDF.user_id == current_user.id).all()
-    return [{"id": pdf.id, "filename": pdf.filename, "description": pdf.description, 
-             "upload_date": pdf.upload_date.isoformat(), 
-             "status": pdf.status, 
-             "error_message": pdf.error_message} for pdf in pdfs]
+def list_pdfs(
+    limit: int = 10,
+    offset: int = 0,
+    collection: str = None,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    # Base query
+    query = db.query(PDF).filter(PDF.user_id == current_user.id)
+    
+    # Add collection filter if specified
+    if collection:
+        if collection == "default":
+            # Handle default collection (either NULL or empty collection field)
+            query = query.filter(
+                or_(
+                    PDF.collection == None,
+                    PDF.collection == "",
+                    PDF.collection == "default"
+                )
+            )
+        else:
+            query = query.filter(PDF.collection == collection)
+    
+    # Get total count for pagination
+    total_count = query.count()
+    
+    # Get paginated results
+    pdfs = query.offset(offset).limit(limit).all()
+    
+    return {
+        "pdfs": [{"id": pdf.id, "filename": pdf.filename, "description": pdf.description, 
+                  "upload_date": pdf.upload_date.isoformat(), 
+                  "status": pdf.status, 
+                  "collection": pdf.collection,
+                  "error_message": pdf.error_message} for pdf in pdfs],
+        "total_count": total_count
+    }
 
 @app.put("/pdfs/{pdf_id}")
 def update_pdf(
@@ -198,7 +243,8 @@ async def process_pdf_in_background(
     filename: str,
     description: str,
     user_id: int,
-    pdf_id: int
+    pdf_id: int,
+    collection: str = None
 ):
     db = None
     try:
@@ -240,6 +286,18 @@ async def process_pdf_in_background(
             
         qdrant_client = QdrantClient(url=config.QDRANT_URL)
         
+        # Store in the specified collection if provided, otherwise use default
+        collection_name = f"user_{user_id}_{collection}" if collection else "pdf_chunks"
+        print(f"Storing in collection: {collection_name}")  # Debug print
+        
+        # Create collection if it doesn't exist
+        collections = qdrant_client.get_collections()
+        if collection_name not in [col.name for col in collections.collections]:
+            qdrant_client.create_collection(
+                collection_name=collection_name,
+                vectors_config=qmodels.VectorParams(size=1536, distance=qmodels.Distance.COSINE)
+            )
+        
         # Store in smaller batches
         batch_size = 100
         for i in range(0, len(chunks), batch_size):
@@ -252,15 +310,17 @@ async def process_pdf_in_background(
                 user_id, 
                 filename, 
                 description, 
-                qdrant_client
+                qdrant_client,
+                collection_name  # Pass the collection name
             )
-            await asyncio.sleep(0.1)  # Give the event loop a chance to process other tasks
+            await asyncio.sleep(0.1)
         
-        # Update status in database
+        # Update status and collection in database
         db = next(get_db())
         pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
         if pdf:
             pdf.status = "processed"
+            pdf.collection = collection  # Make sure to update the collection in the database
             db.commit()
             
     except Exception as e:
@@ -295,3 +355,118 @@ async def get_pdf_status(
         "status": pdf.status,
         "error_message": pdf.error_message if hasattr(pdf, "error_message") else None
     }
+
+# Add new collection management endpoints
+@app.post("/collections")
+async def create_collection(
+    collection: CollectionCreate,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    # Check if collection already exists
+    qdrant_client = QdrantClient(url=config.QDRANT_URL)
+    collections = qdrant_client.get_collections()
+    collection_name = f"user_{current_user.id}_{collection.name}"
+    
+    if collection_name in [col.name for col in collections.collections]:
+        raise HTTPException(status_code=400, detail="Collection name already exists")
+    
+    # Create collection in Qdrant
+    try:
+        qdrant_client.create_collection(
+            collection_name=collection_name,
+            vectors_config=qmodels.VectorParams(size=1536, distance=qmodels.Distance.COSINE)
+        )
+        return {"message": f"Collection '{collection.name}' created successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.get("/collections")
+async def list_collections(
+    current_user = Depends(get_current_user)
+):
+    qdrant_client = QdrantClient(url=config.QDRANT_URL)
+    collections = qdrant_client.get_collections()
+    
+    user_collections = []
+    for col in collections.collections:
+        if col.name.startswith(f"user_{current_user.id}_"):
+            # Get collection info to get the vectors count
+            collection_info = qdrant_client.get_collection(col.name)
+            user_collections.append({
+                "name": col.name.replace(f"user_{current_user.id}_", ""),
+                "vectors_count": collection_info.points_count  # Use points_count instead of vectors_count
+            })
+    
+    return user_collections
+
+@app.delete("/collections/{collection_name}")
+async def delete_collection(
+    collection_name: str,
+    current_user = Depends(get_current_user)
+):
+    qdrant_client = QdrantClient(url=config.QDRANT_URL)
+    full_collection_name = f"user_{current_user.id}_{collection_name}"
+    try:
+        qdrant_client.delete_collection(collection_name=full_collection_name)
+        return {"message": f"Collection '{collection_name}' deleted successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.post("/collections/{collection_name}/pdfs/{pdf_id}")
+async def add_pdf_to_collection(
+    collection_name: str,
+    pdf_id: int,
+    db: Session = Depends(get_db),
+    current_user = Depends(get_current_user)
+):
+    # Verify PDF exists and belongs to user
+    pdf = db.query(PDF).filter(PDF.id == pdf_id, PDF.user_id == current_user.id).first()
+    if not pdf:
+        raise HTTPException(status_code=404, detail="PDF not found")
+    
+    # Get existing vectors from pdf_chunks
+    qdrant_client = QdrantClient(url=config.QDRANT_URL)
+    points = qdrant_client.scroll(
+        collection_name="pdf_chunks",
+        scroll_filter=qmodels.Filter(
+            must=[
+                qmodels.FieldCondition(key="pdf_id", match=qmodels.MatchValue(value=pdf_id)),
+                qmodels.FieldCondition(key="user_id", match=qmodels.MatchValue(value=current_user.id))
+            ]
+        )
+    )[0]
+    
+    # Add vectors to the specified collection
+    full_collection_name = f"user_{current_user.id}_{collection_name}"
+    try:
+        qdrant_client.upsert(
+            collection_name=full_collection_name,
+            points=[point for point in points]
+        )
+        return {"message": f"PDF added to collection '{collection_name}' successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))
+
+@app.delete("/collections/{collection_name}/pdfs/{pdf_id}")
+async def remove_pdf_from_collection(
+    collection_name: str,
+    pdf_id: int,
+    current_user = Depends(get_current_user)
+):
+    qdrant_client = QdrantClient(url=config.QDRANT_URL)
+    full_collection_name = f"user_{current_user.id}_{collection_name}"
+    
+    try:
+        qdrant_client.delete(
+            collection_name=full_collection_name,
+            points_selector=qmodels.Filter(
+                must=[
+                    qmodels.FieldCondition(key="pdf_id", match=qmodels.MatchValue(value=pdf_id)),
+                    qmodels.FieldCondition(key="user_id", match=qmodels.MatchValue(value=current_user.id))
+                ]
+            )
+        )
+        return {"message": f"PDF removed from collection '{collection_name}' successfully"}
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=str(e))

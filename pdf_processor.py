@@ -55,7 +55,7 @@ async def generate_embeddings(chunks, openai_client):
             
     return all_embeddings
 
-def store_in_qdrant(chunks, embeddings, pdf_id, user_id,filename,description, qdrant_client):
+def store_in_qdrant(chunks, embeddings, pdf_id, user_id, filename, description, qdrant_client, collection_name="pdf_chunks"):
     points = [
         qmodels.PointStruct(
             id=str(uuid.uuid4()),
@@ -64,11 +64,11 @@ def store_in_qdrant(chunks, embeddings, pdf_id, user_id,filename,description, qd
                 "pdf_id": pdf_id,
                 "user_id": user_id,
                 "filename": filename,
-                "description": description if description else "",  # Add filename to metadata
+                "description": description if description else "",
                 "chunk_index": i,
                 "text": chunk
             }
         )
         for i, (chunk, embedding) in enumerate(zip(chunks, embeddings))
     ]
-    qdrant_client.upsert(collection_name="pdf_chunks", points=points)
+    qdrant_client.upsert(collection_name=collection_name, points=points)
