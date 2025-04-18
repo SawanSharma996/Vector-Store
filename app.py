@@ -132,7 +132,7 @@ async def upload_pdf(
 
 @app.get("/pdfs")
 def list_pdfs(
-    limit: int = 10,
+    limit: int = 40,
     offset: int = 0,
     collection: str = None,
     db: Session = Depends(get_db),
@@ -165,6 +165,8 @@ def list_pdfs(
         "pdfs": [{"id": pdf.id, "filename": pdf.filename, "description": pdf.description, 
                   "upload_date": pdf.upload_date.isoformat(), 
                   "status": pdf.status, 
+                  "pages_total": pdf.pages_total,
+                  "pages_indexed": pdf.pages_indexed,
                   "collection": pdf.collection,
                   "error_message": pdf.error_message} for pdf in pdfs],
         "total_count": total_count
@@ -221,10 +223,11 @@ def delete_pdf(pdf_id: int, db: Session = Depends(get_db),
     pdf = db.query(PDF).filter(PDF.id == pdf_id, PDF.user_id == current_user.id).first()
     if not pdf:
         raise HTTPException(status_code=404, detail="PDF not found")
-    
+    base_collection = pdf.collection
+    collection_name = f"user_{current_user.id}_{base_collection}" if base_collection else "pdf_chunks"
     qdrant_client = QdrantClient(url=config.QDRANT_URL)
     qdrant_client.delete(
-        collection_name="pdf_chunks",
+        collection_name=collection_name,
         points_selector=qmodels.Filter(
             must=[
                 qmodels.FieldCondition(key="pdf_id", match=qmodels.MatchValue(value=pdf_id)),
@@ -264,7 +267,7 @@ async def process_pdf_in_background(
         if pdf:
             pdf.status = "chunking"
             db.commit()
-            
+        pages = await extract_text_from_pdf(temp_path)    
         chunks = split_text_into_chunks(text)
         
         # Update status again
@@ -320,6 +323,11 @@ async def process_pdf_in_background(
         pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
         if pdf:
             pdf.status = "processed"
+            pdf.pages_total    = len(pages)
+            pdf.pages_indexed  = len({               # distinct pages we actually stored
+            int(c.split(":",1)[0].split()[1])    # pull “7” out of “Page 7:\n…”
+            for c in chunks
+        })
             pdf.collection = collection  # Make sure to update the collection in the database
             db.commit()
             
@@ -353,6 +361,8 @@ async def get_pdf_status(
     return {
         "pdf_id": pdf.id,
         "status": pdf.status,
+        "pages_total": pdf.pages_total,
+        "pages_indexed": pdf.pages_indexed,
         "error_message": pdf.error_message if hasattr(pdf, "error_message") else None
     }
 

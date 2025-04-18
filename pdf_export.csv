@@ -1,0 +1,882 @@
+id,filename,collection
+5,UN_2021_TP_Manual.pdf,UN
+6,"UN_Transfer Pricing in the Pharmaceutical Industry.pdf",UN
+7,"UN_Transfer Pricing of Agricultural Products .pdf .pdf",UN
+8,"UN_Transfer Pricing of Carbon Offsets and Carbon Credits .pdf",UN
+11,"OECD Transfer Pricing Guidelines 2022 (2).pdf",OECD
+13,"Annex A — examples of helpful supporting records and information - GOV.UK.pdf",UK
+14,"CHAPTER 1 Basic Transfer Pricing Rules.pdf",UK
+15,"CHAPTER 4 Calculation of profits Oil Valuation.pdf",UK
+16,"Common compliance risks (part 2) - GOV.UK.pdf",UK
+17,"Further information — next steps, further questions, feedback, legislation and guidance - GOV.UK.pdf",UK
+18,"Indicators of transfer pricing policy design risk (part 3) - GOV.UK.pdf",UK
+19,"INTM410510 - Transfer pricing_ introduction_ what is transfer pricing__ Structure of the transfer pricing guidance - HMRC internal manual - GOV.UK.pdf",UK
+20,"INTM410520 - Transfer pricing_ introduction_ what is transfer pricing_ _ an explanation - HMRC internal manual - GOV.UK.pdf",UK
+21,"INTM413010 - Transfer pricing_ the main thin capitalisation legislation_ Overview - HMRC internal manual - GOV.UK.pdf",UK
+22,"INTM413020 - Transfer pricing_ the main thin capitalisation legislation_ Introduction - HMRC internal manual - GOV.UK.pdf",UK
+23,"INTM413030 - Transfer pricing_ thin capitalisation legislation and principles_ the “would” and “could” arguments - HMRC internal manual - GOV.UK.pdf",UK
+24,"INTM413040 - Transfer pricing_ the main thin capitalisation legislation_ Summary of sections specific to thin capitalisation - HMRC internal manual - GOV.UK.pdf",UK
+25,"INTM413050 - Transfer pricing_ the main thin capitalisation legislation_ Potential UK tax advantage - HMRC internal manual - GOV.UK.pdf",UK
+26,"INTM413060 - Transfer pricing_ the main thin capitalisation legislation_ Transaction or series of transactions - HMRC internal manual - GOV.UK.pdf",UK
+27,"INTM413070 - Transfer pricing_ the main thin capitalisation legislation_ Separate entity basis for determining borrowing capacity - HMRC internal manual - GOV.UK.pdf",UK
+28,"INTM413080 - Transfer pricing_ the main thin capitalisation legislation_ Borrowing capacity - the borrowing unit - HMRC internal manual - GOV.UK.pdf",UK
+29,"INTM413090 - Transfer pricing_ the main thin capitalisation legislation_ UK-UK thin capitalisation - HMRC internal manual - GOV.UK.pdf",UK
+30,"INTM413100 - Transfer pricing_ the main thin capitalisation legislation_ Special rules for lending between companies - HMRC internal manual - GOV.UK.pdf",UK
+31,"INTM413110 - Transfer pricing_ the main thin capitalisation legislation_ Guarantees - what they do and what they are - HMRC internal manual - GOV.UK.pdf",UK
+32,"INTM413120 - Transfer pricing_ the main thin capitalisation legislation_ Evaluating guarantees_ starting with the arm’s length cost of debt - HMRC internal manual - GOV.UK.pdf",UK
+33,"INTM413130 - Transfer pricing_ the main thin capitalisation legislation_ Evaluating guarantees_ establishing the arm’s length value of a guarantee - HMRC internal manual - GOV.UK.pdf",UK
+34,"INTM413140 - Transfer pricing_ the main thin capitalisation legislation_ compensating adjustments for lenders - HMRC internal manual - GOV.UK.pdf",UK
+35,"INTM413150 - Transfer pricing_ the main thin capitalisation legislation_ Removal of disallowed interest from obligation to deduct tax - HMRC internal manual - GOV.UK.pdf",UK
+36,"INTM413160 - Transfer pricing_ the main thin capitalisation legislation_ Claims to compensating adjustments for guarantors - HMRC internal manual - GOV.UK.pdf",UK
+37,"INTM413170 - Transfer pricing_ the main thin capitalisation legislation_ Interaction between claims by lenders and guarantors - HMRC internal manual - GOV.UK.pdf",UK
+38,"INTM413180 - Transfer pricing_ the main thin capitalisation legislation_ The acting together rules - HMRC internal manual - GOV.UK.pdf",UK
+39,"INTM413190 - Transfer pricing_ the main thin capitalisation legislation_ Treatment of interest when it is paid - HMRC internal manual - GOV.UK.pdf",UK
+40,"INTM413200 - Transfer pricing_ the main thin capitalisation legislation_ Interest which exceeds the arm’s length amount - HMRC internal manual - GOV.UK.pdf",UK
+41,"INTM413210 - Transfer pricing_ the main thin capitalisation legislation_ Payments of yearly interest made overseas - HMRC internal manual - GOV.UK.pdf",UK
+42,"INTM413220 - Transfer pricing_ the main thin capitalisation legislation_ Consequences of failing to deduct withholding tax - HMRC internal manual - GOV.UK.pdf",UK
+43,"INTM413230 - Transfer pricing_ the main thin capitalisation legislation_ The interaction between UK taxing rights and double taxation agreements - HMRC internal manual - GOV.UK.pdf",UK
+44,"INTM413240 - Transfer pricing_ the main thin capitalisation legislation_ Evolution of the thin capitalisation legislation_ pre 29 November 1994 - HMRC internal manual - GOV.UK.pdf",UK
+45,"INTM413250 - Transfer pricing_ the main thin capitalisation legislation_ Evolution of the thin capitalisation legislation_ 29 November 1994 - 31 March 2004 - HMRC internal manual - GOV.UK.pdf",UK
+46,"INTM413260-Transfer pricing_ the main thin capitalisation legislation_ Evolution of the thin capitalisation legislation - interest re-characterised as a distribution- HMRC internal manual - GOV.UK.pdf",UK
+47,"INTM421005 - Transfer pricing_ Methodologies_ OECD Guidelines_ Importance of Article 9 of OECD Model Tax Convention - HMRC internal manual - GOV.UK.pdf",UK
+48,"INTM421010 - Transfer pricing_ Methodologies_ OECD Guidelines_ Overview - HMRC internal manual - GOV.UK.pdf",UK
+49,"INTM421020 - Transfer pricing_ Methodologies_ OECD Guidelines_ Comparability - HMRC internal manual - GOV.UK.pdf",UK
+50,"INTM421030 - Transfer pricing_ Methodologies_ OECD Guidelines_ Comparable uncontrolled price - HMRC internal manual - GOV.UK.pdf",UK
+51,"INTM421040 - Transfer pricing_ Methodologies_ OECD Guidelines_ Comparable uncontrolled price_ the search for comparables - HMRC internal manual - GOV.UK.pdf",UK
+52,"INTM421041 - Transfer pricing_ Methodologies_ OECD Guidelines_ Comparable uncontrolled price_ Commodity Transactions - HMRC internal manual - GOV.UK.pdf",UK
+53,"INTM421050 - Transfer pricing_ Methodologies_ OECD Guidelines_ Resale minus - HMRC internal manual - GOV.UK.pdf",UK
+54,"INTM421060 - Transfer pricing_ Methodologies_ OECD Guidelines_ Cost plus - HMRC internal manual - GOV.UK.pdf",UK
+55,"INTM421070 - Transfer pricing_ Methodologies_ OECD Guidelines_ Profit split - HMRC internal manual - GOV.UK.pdf",UK
+56,"INTM421080 - Transfer pricing_ Methodologies_ OECD Guidelines_ Transactional net margin method - HMRC internal manual - GOV.UK.pdf",UK
+57,"INTM421090 - Transfer pricing_ Methodologies_ OECD Guidelines_ Cost contribution arrangements - HMRC internal manual - GOV.UK.pdf",UK
+58,"INTM421100 - Transfer pricing_ Methodologies_ OECD Guidelines_ Which transactions to review - HMRC internal manual - GOV.UK.pdf",UK
+59,"INTM421110 - Transfer pricing_ Methodologies_ OECD Guidelines_ Intangibles - HMRC internal manual - GOV.UK.pdf",UK
+60,"INTM422010 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ introduction - HMRC internal manual - GOV.UK.pdf",UK
+61,"INTM422020 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ what is an APA_ - HMRC internal manual - GOV.UK.pdf",UK
+62,"INTM422030 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ types of agreement - HMRC internal manual - GOV.UK.pdf",UK
+63,"INTM422040 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ who may apply_ - HMRC internal manual - GOV.UK.pdf",UK
+64,"INTM422050 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ expression of interest - HMRC internal manual - GOV.UK.pdf",UK
+65,"INTM422060 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ term of agreement - HMRC internal manual - GOV.UK.pdf",UK
+66,"INTM422070 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ formal application - HMRC internal manual - GOV.UK.pdf",UK
+67,"INTM422080 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ evaluation - HMRC internal manual - GOV.UK.pdf",UK
+68,"INTM422090 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ reaching agreement - HMRC internal manual - GOV.UK.pdf",UK
+69,"INTM422100 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ monitoring and review - HMRC internal manual - GOV.UK.pdf",UK
+70,"INTM422110 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ revocation and penalties - HMRC internal manual - GOV.UK.pdf",UK
+71,"INTM422120 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ revising and renewing - HMRC internal manual - GOV.UK.pdf",UK
+72,"INTM422130 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ information to set out in the formal application - HMRC internal manual - GOV.UK.pdf",UK
+73,"INTM422140 - Transfer pricing_ methodologies_ Advance Pricing Agreements_ Sample agreement - HMRC internal manual - GOV.UK.pdf",UK
+74,"INTM423010 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ Introduction to MAP - HMRC internal manual - GOV.UK.pdf",UK
+75,"INTM423020 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ Eligibility for MAP - HMRC internal manual - GOV.UK.pdf",UK
+76,"INTM423030 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ Access to MAP - HMRC internal manual - GOV.UK.pdf",UK
+77,"INTM423040 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ The MAP process - HMRC internal manual - GOV.UK.pdf",UK
+78,"INTM423050 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ The MAP process continued - HMRC internal manual - GOV.UK.pdf",UK
+79,"INTM423060 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ Concluding the MAP - HMRC internal manual - GOV.UK.pdf",UK
+80,"INTM423070 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ Methods of giving relief - HMRC internal manual - GOV.UK.pdf",UK
+81,"INTM423080 - Transfer pricing_ methodologies_ Mutual Agreement Procedure_ Arbitration - HMRC internal manual - GOV.UK.pdf",UK
+82,"INTM423090 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ Other matters - HMRC internal manual - GOV.UK.pdf",UK
+83,"INTM423100 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ Advice on responding to MAP requests - HMRC internal manual - GOV.UK.pdf",UK
+84,"INTM423110 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ HMRC contacts - HMRC internal manual - GOV.UK.pdf",UK
+85,"INTM423120 - Transfer Pricing_ methodologies_ Mutual Agreement Procedure_ Links to other relevant documents - HMRC internal manual - GOV.UK.pdf",UK
+86,"INTM423130 - Transfer Pricing_ methodologies_ Mutual Agreement Procedures_ Information requirements - HMRC internal manual - GOV.UK.pdf",UK
+87,"INTM440010 - Transfer pricing_ Types of transactions_ overview - HMRC internal manual - GOV.UK.pdf",UK
+88,"INTM440020 - Transfer pricing_ Types of transactions_ tangible goods - HMRC internal manual - GOV.UK.pdf",UK
+89,"INTM440030 - Transfer pricing_ Types of transactions_ transfer of trading stock - HMRC internal manual - GOV.UK.pdf",UK
+90,"INTM440040 - Transfer pricing_ Types of transactions_ land and buildings - HMRC internal manual - GOV.UK.pdf",UK
+91,"INTM440050 - Transfer pricing_ Types of transactions_ Leasing - HMRC internal manual - GOV.UK.pdf",UK
+92,"INTM440060 - Transfer pricing_ Types of transactions_ Services_ introduction - HMRC internal manual - GOV.UK.pdf",UK
+93,"INTM440070 - Transfer pricing_ Types of transactions_ Services_ arm’s length price - HMRC internal manual - GOV.UK.pdf",UK
+94,"INTM440071 - Transfer Pricing_ Types of transactions_ Services_ Low Value-Adding Services - HMRC internal manual - GOV.UK.pdf",UK
+95,"INTM440080 - Transfer pricing_ Types of transactions_ Services_ particular types - HMRC internal manual - GOV.UK.pdf",UK
+96,"INTM440090 - Transfer pricing_ Types of transactions_ centrally provided services - HMRC internal manual - GOV.UK.pdf",UK
+97,"INTM440100 - Transfer pricing_ Types of transactions_ particular elements of a transaction - HMRC internal manual - GOV.UK.pdf",UK
+98,"INTM440110 - Transfer pricing_ Types of transactions_ intangibles_ what are intangibles_ - HMRC internal manual - GOV.UK.pdf",UK
+99,"INTM440120 - Transfer pricing_ Types of transactions_ intangibles_ how are intangibles exploited_ - HMRC internal manual - GOV.UK.pdf",UK
+100,"INTM440130 - Transfer pricing_ Types of transactions_ intangibles_ fragmentation - HMRC internal manual - GOV.UK.pdf",UK
+101,"INTM440140 - Transfer pricing_ Types of transactions_ intangibles_ establishing an arm’s length price for valuable intangibles - HMRC internal manual - GOV.UK.pdf",UK
+102,"INTM440150 - Transfer pricing_ Types of transactions_ intangibles_ branded goods - HMRC internal manual - GOV.UK.pdf",UK
+103,"INTM440160 - Transfer pricing_ Types of transactions_ intangibles_ establishing an arm’s length price for valuable intangibles_ product line income statements - HMRC internal manual - GOV.UK.pdf",UK
+104,"INTM440170 - Transfer pricing_ Types of transactions_ intangibles_ establishing an arm’s length price for valuable intangibles_ profit split method - HMRC internal manual - GOV.UK.pdf",UK
+105,"INTM440175 - Transfer Pricing_ Types of transactions_ Intangibles_ Establising an arm_s length price for valuable Intangibles_ Uncertainty in valuation - HMRC internal manual - GOV.UK.pdf",UK
+106,"INTM440176 - Transfer Pricing_ Types of transactions_ Intangibles_ Establishing an arm_s length price for valuable intangibles_ Hard to Value Intangibles - HMRC internal manual - GOV.UK.pdf",UK
+107,"INTM440180 - Transfer pricing_ Types of transactions_ intangibles_ royalties - HMRC internal manual - GOV.UK.pdf",UK
+108,"INTM440190 - Transfer pricing_ Types of transactions_ series of transactions - HMRC internal manual - GOV.UK.pdf",UK
+109,"INTM440200 - Transfer pricing_ Types of transactions_ setting aside a provision between connected parties - HMRC internal manual - GOV.UK.pdf",UK
+110,"INTM440201 - Transfer Pricing_ Types of transactions_ difference between accurate delineation and disregard - HMRC internal manual - GOV.UK.pdf",UK
+111,"INTM440210 - Transfer pricing_ Types of transactions_ share options_ general - HMRC internal manual - GOV.UK.pdf",UK
+112,"INTM440220 - Transfer pricing_ Types of transactions_ share options_ summary of treatment - HMRC internal manual - GOV.UK.pdf",UK
+113,"INTM440230 - Transfer pricing_ Types of transactions_ share options_ transfer pricing issues - HMRC internal manual - GOV.UK.pdf",UK
+114,"INTM440240 - Transfer pricing_ Types of transactions_ share options_ transfer pricing issues_ other situations - HMRC internal manual - GOV.UK.pdf",UK
+115,"INTM440250 - Transfer pricing_ Types of transactions_ share options_ Application of the arbitrage receipts rule to the provision of share plans - HMRC internal manual - GOV.UK.pdf",UK
+116,"INTM440260 - Transfer pricing_ Types of transactions_ charities - HMRC internal manual - GOV.UK.pdf",UK
+117,"INTM441000 - Transfer Pricing_ Transactions and Structures_ Business Structures_ contents - HMRC internal manual - GOV.UK.pdf",UK
+118,"INTM441010 - Transfer Pricing_ Transactions and Structures_ business structures_ general overview - HMRC internal manual - GOV.UK.pdf",UK
+119,"INTM441020 - Transfer Pricing_ Transactions and Structures_ business structures_ tax-efficient structures - HMRC internal manual - GOV.UK.pdf",UK
+120,"INTM441030 - Transfer Pricing_ Transactions and Structures_ business structures_ transferring risk - HMRC internal manual - GOV.UK.pdf",UK
+121,"INTM441040 - Transfer Pricing_ Transactions and Structures_ business structures_ marketing and distribution - commissionaires_ overview - HMRC internal manual - GOV.UK.pdf",UK
+122,"INTM441050 - Transfer Pricing_ Transactions and Structures_ business structures_ marketing and distribution - commissionaires_ practicalities - HMRC internal manual - GOV.UK.pdf",UK
+123,"INTM441060 - Transfer Pricing_ Transactions and Structures_ business structures_ marketing and distribution - commissionaires_ evidence gathering - HMRC internal manual - GOV.UK.pdf",UK
+124,"INTM441070 - Transfer Pricing_ Transactions and Structures_ business structures_ marketing and distribution - commissionaires_ challenges - HMRC internal manual - GOV.UK.pdf",UK
+125,"INTM441080 - Transfer Pricing_ Transactions and Structures_ business structures_ marketing and distribution - other structures - HMRC internal manual - GOV.UK.pdf",UK
+126,"INTM441085 - Transfer Pricing_ Transactions and Structures_ Business structures - HMRC internal manual - GOV.UK.pdf",UK
+127,"INTM441090 - Transfer Pricing_ Transactions and Structures_ business structures_ manufacturing_ overview - HMRC internal manual - GOV.UK.pdf",UK
+128,"INTM441100 - Transfer Pricing_ Transactions and Structures_ business structures_ manufacturing_ arm’s length reward - HMRC internal manual - GOV.UK.pdf",UK
+129,"INTM441110 - Transfer Pricing_ Transactions and Structures_ business structures_ services - HMRC internal manual - GOV.UK.pdf",UK
+130,"INTM441120 - Transfer Pricing_ Transactions and Structures_ business structures_ research and development - HMRC internal manual - GOV.UK.pdf",UK
+131,"INTM441130 - Transfer Pricing_ Transactions and Structures_ business structures_ valuable intangibles - HMRC internal manual - GOV.UK.pdf",UK
+132,"INTM441140 - Transfer Pricing_ Transactions and Structures_ business structures_ other legislation - HMRC internal manual - GOV.UK.pdf",UK
+133,"INTM450010 - Transfer pricing records_ overview - HMRC internal manual - GOV.UK.pdf",UK
+134,"INTM450020 - Transfer pricing records_ who is in scope_ - HMRC internal manual - GOV.UK.pdf",UK
+135,"INTM450021 - Transfer pricing records_ Permanent Establishments - HMRC internal manual - GOV.UK.pdf",UK
+136,"INTM450030 - Transfer pricing records_ who has the record keeping obligation_ - HMRC internal manual - GOV.UK.pdf",UK
+137,"INTM450040 - Transfer pricing records_ frequency of review - HMRC internal manual - GOV.UK.pdf",UK
+138,"INTM450050 - Transfer pricing records_ when to provide the specified transfer pricing records - HMRC internal manual - GOV.UK.pdf",UK
+139,"INTM450060 - Transfer pricing records_ possession or power - HMRC internal manual - GOV.UK.pdf",UK
+140,"INTM450070 - Transfer pricing records_ failure to keep and preserve the specified transfer pricing records - HMRC internal manual - GOV.UK.pdf",UK
+141,"INTM450080 - Transfer pricing records_ where an MNE group does not meet the CbCR threshold - HMRC internal manual - GOV.UK.pdf",UK
+142,"INTM450090 - Transfer pricing records_ master file - HMRC internal manual - GOV.UK.pdf",UK
+143,"INTM450100 - Transfer pricing records_ local file - HMRC internal manual - GOV.UK.pdf",UK
+144,"INTM450101 - Transfer pricing records_ controlled transactions - HMRC internal manual - GOV.UK.pdf",UK
+145,"INTM450102 - Transfer pricing records_ categories of transactions - HMRC internal manual - GOV.UK.pdf",UK
+146,"INTM450103 - Transfer pricing records_ aggregation of financial transactions - HMRC internal manual - GOV.UK.pdf",UK
+147,"INTM450104 - Transfer pricing records_ materiality of a category of controlled transactions - HMRC internal manual - GOV.UK.pdf",UK
+148,"INTM450105 - Transfer pricing records_ local file exemptions - UK to UK transactions - HMRC internal manual - GOV.UK.pdf",UK
+149,"INTM450106 - Transfer pricing records_ local file exemptions - Advance Pricing Agreement (APAs) - HMRC internal manual - GOV.UK.pdf",UK
+150,"INTM480510 - Transfer Pricing_ Operational guidance_ scope of the operational guidance - HMRC internal manual - GOV.UK.pdf",UK
+151,"INTM480520 - Transfer pricing_ Operational guidance_ alternatives to consider before transfer pricing - HMRC internal manual - GOV.UK.pdf",UK
+152,"INTM480530 - Transfer Pricing_ Operational guidance_ giving transfer pricing advice to customers - HMRC internal manual - GOV.UK.pdf",UK
+153,"INTM480540 - Transfer Pricing_ Operational guidance_ real time working of transfer pricing issues (excluding thin capitalisation) - HMRC internal manual - GOV.UK.pdf",UK
+154,"INTM480550 - Transfer Pricing_ Operational guidance_ real time working of transfer pricing issues_ thin capitalisation - HMRC internal manual - GOV.UK.pdf",UK
+155,"INTM481010 - Transfer pricing_ operational guidance_ governance_ introduction - HMRC internal manual - GOV.UK.pdf",UK
+156,"INTM481020 - Transfer pricing_ operational guidance_ governance_ what types of enquiry are within the governance_ - HMRC internal manual - GOV.UK.pdf",UK
+157,"INTM481030 - Transfer pricing_ operational guidance_ governance_ the stages of an enquiry - HMRC internal manual - GOV.UK.pdf",UK
+158,"INTM481040 - Transfer pricing_ operational guidance_ governance_ the selection stage - HMRC internal manual - GOV.UK.pdf",UK
+159,"INTM481050 - Transfer pricing_ operational guidance_ governance_ the progress stage - HMRC internal manual - GOV.UK.pdf",UK
+160,"INTM481060 - Transfer pricing_ operational guidance_ governance_ the resolution stage - HMRC internal manual - GOV.UK.pdf",UK
+161,"INTM481070 - Transfer pricing_ operational guidance_ governance_ the Transfer Pricing Group - HMRC internal manual - GOV.UK.pdf",UK
+162,"INTM481080 - Transfer pricing_ operational guidance_ governance_ case teams and the wider transfer pricing community - HMRC internal manual - GOV.UK.pdf",UK
+163,"INTM482010 - Transfer pricing_ risk assessment_ introduction - HMRC internal manual - GOV.UK.pdf",UK
+164,"INTM482020 - Transfer pricing_ risk assessment_ issues to consider before starting a transfer pricing enquiry_ resources - HMRC internal manual - GOV.UK.pdf",UK
+165,"INTM482030 - Transfer pricing_ risk assessment_ issues to consider before starting a transfer pricing enquiry_ tax at risk - HMRC internal manual - GOV.UK.pdf",UK
+166,"INTM482040 - Transfer pricing_ risk assessment_ transfer pricing risk indicators_ general - HMRC internal manual - GOV.UK.pdf",UK
+167,"INTM482050 - Transfer pricing_ risk assessment_ transfer pricing risk indicators_ effective tax rates - HMRC internal manual - GOV.UK.pdf",UK
+168,"INTM482060 - Transfer pricing_ risk assessment_ transfer pricing risk indicators_ transfer pricing rules in other countries - HMRC internal manual - GOV.UK.pdf",UK
+169,"INTM482070 - Transfer pricing_ risk assessment_ transfer pricing risk indicators_ comparing the results of the company and the group - HMRC internal manual - GOV.UK.pdf",UK
+170,"INTM482080 - Transfer pricing_ risk assessment_ transfer pricing risk indicators_ losses over a number of years - HMRC internal manual - GOV.UK.pdf",UK
+171,"INTM482090 - Transfer pricing_ risk assessment_ transfer pricing risk indicators_ payment of significant management or service fees - HMRC internal manual - GOV.UK.pdf",UK
+172,"INTM482100 - Transfer pricing_ risk assessment_ transfer pricing risk indicators_ payment of royalties - HMRC internal manual - GOV.UK.pdf",UK
+173,"INTM482110 - Transfer pricing_ risk assessment_ transfer pricing risk indicators_ ownership of intellectual property - HMRC internal manual - GOV.UK.pdf",UK
+174,"INTM482120 - Transfer pricing_ risk assessment_ transfer pricing risk indicators_ business reorganisations - HMRC internal manual - GOV.UK.pdf",UK
+175,"INTM482130 - Transfer pricing_ risk assessment_ conducting a transfer pricing risk assessment_ detailed process - HMRC internal manual - GOV.UK.pdf",UK
+176,"INTM482140 - Transfer pricing_ risk assessment_ conducting a transfer pricing risk assessment_ review of information from other sources - HMRC internal manual - GOV.UK.pdf",UK
+177,"INTM482150 - Transfer pricing_ risk assessment_ conducting a transfer pricing risk assessment_ lack of information - HMRC internal manual - GOV.UK.pdf",UK
+178,"INTM482160 - Transfer pricing_ risk assessment_ conducting a transfer pricing risk assessment_ range of issues - HMRC internal manual - GOV.UK.pdf",UK
+179,"INTM482170 - Transfer pricing_ risk assessment_ summary and conclusions - HMRC internal manual - GOV.UK.pdf",UK
+180,"INTM483010 - Transfer pricing_ operational guidance_ working a transfer pricing case_ opening the case - HMRC internal manual - GOV.UK.pdf",UK
+181,"INTM483020 - Transfer pricing_ operational guidance_ working a transfer pricing case_ working the case - HMRC internal manual - GOV.UK.pdf",UK
+182,"INTM483030 - Transfer pricing_ operational guidance_ working a transfer pricing case_ transfer pricing documentation - HMRC internal manual - GOV.UK.pdf",UK
+183,"INTM483040 - Transfer pricing_ operational guidance_ working a transfer pricing case_ initial information request - HMRC internal manual - GOV.UK.pdf",UK
+184,"INTM483050 - Transfer pricing_ operational guidance_ working a transfer pricing case_ dealing with the initial response - HMRC internal manual - GOV.UK.pdf",UK
+185,"INTM483060 - Transfer pricing_ operational guidance_ working a transfer pricing case_ Exchange of information - HMRC internal manual - GOV.UK.pdf",UK
+186,"INTM483070 - Transfer pricing_ operational guidance_ working a transfer pricing case_ reaching a settlement - HMRC internal manual - GOV.UK.pdf",UK
+187,"INTM483080 - Transfer pricing_ operational guidance_ working a transfer pricing case_ how many years_ - HMRC internal manual - GOV.UK.pdf",UK
+188,"INTM483090 - Transfer pricing_ operational guidance_ working a transfer pricing case_ assessments and enquiry closure notices - HMRC internal manual - GOV.UK.pdf",UK
+189,"INTM483100 - Transfer pricing_ operational guidance_ working a transfer pricing case_ interest - HMRC internal manual - GOV.UK.pdf",UK
+190,"INTM483110 - Transfer pricing_ operational guidance_ working a transfer pricing case_ penalties - HMRC internal manual - GOV.UK.pdf",UK
+191,"INTM483120 - Transfer pricing_ operational guidance_ working a transfer pricing case_ penalties_ negligence or carelessness - HMRC internal manual - GOV.UK.pdf",UK
+192,"INTM483130 - Transfer pricing_ operational guidance_ working a transfer pricing case_ after the settlement - HMRC internal manual - GOV.UK.pdf",UK
+193,"INTM484010 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ overview - HMRC internal manual - GOV.UK.pdf",UK
+194,"INTM484020 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ report contents - HMRC internal manual - GOV.UK.pdf",UK
+195,"INTM484030 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ legislation - HMRC internal manual - GOV.UK.pdf",UK
+196,"INTM484040 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ information in a report_ functional analysis - HMRC internal manual - GOV.UK.pdf",UK
+197,"INTM484050 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ what transactions are covered_ - HMRC internal manual - GOV.UK.pdf",UK
+198,"INTM484060 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ OECD methodologies - HMRC internal manual - GOV.UK.pdf",UK
+199,"INTM484070 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ OECD methods - HMRC internal manual - GOV.UK.pdf",UK
+200,"INTM484080 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ using other methods - HMRC internal manual - GOV.UK.pdf",UK
+201,"INTM484090 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ arm’s length range - HMRC internal manual - GOV.UK.pdf",UK
+202,"INTM484100 - Transfer pricing_ operational guidance_ examining transfer pricing reports_ dealing with global transfer pricing - HMRC internal manual - GOV.UK.pdf",UK
+203,"INTM485010 - Transfer pricing operational guidance_ Evidence gathering_ Overview - HMRC internal manual - GOV.UK.pdf",UK
+204,"INTM485020 - Transfer pricing operational guidance_ Evidence gathering_ Establish the facts - HMRC internal manual - GOV.UK.pdf",UK
+205,"INTM485021 - Transfer pricing operational guiance_ Comparability Analysis - HMRC internal manual - GOV.UK.pdf",UK
+206,"INTM485022 - Transfer prcing operational guidance_ Accurate delineation of the actual transaction_ Economically relevant characteristics - HMRC internal manual - GOV.UK.pdf",UK
+207,"INTM485023 - Transfer pricing operational guidance_ Accurate delineation of the actual transaction_ Risk allocation - HMRC internal manual - GOV.UK.pdf",UK
+208,"INTM485024 - Transfer pricing operational guidance_ Accurate delineation of the actual transaction_ Full process - HMRC internal manual - GOV.UK.pdf",UK
+209,"INTM485025 - Transfer pricing operational guidance_ Accurate delineation of the actual transaction_ Risk - HMRC internal manual - GOV.UK.pdf",UK
+210,"INTM485030 - Transfer pricing operational guidance_ Evidence gathering_ Using the most appropriate method - HMRC internal manual - GOV.UK.pdf",UK
+211,"INTM485040 - Transfer pricing operational guidance_ Evidence gathering_ Using a test year - HMRC internal manual - GOV.UK.pdf",UK
+212,"INTM485050 - Transfer pricing operational guidance_ Evidence gathering_ Bargaining power - HMRC internal manual - GOV.UK.pdf",UK
+213,"INTM485060 - Transfer pricing operational guidance_ Evidence gathering_ Searching for comparables - HMRC internal manual - GOV.UK.pdf",UK
+214,"INTM485070 - Transfer pricing operational guidance_ Evidence gathering_ Searching for comparables_ internal comparables - HMRC internal manual - GOV.UK.pdf",UK
+215,"INTM485080 - Transfer pricing operational guidance_ Evidence gathering__ Searching for comparables_ public information - HMRC internal manual - GOV.UK.pdf",UK
+216,"INTM485090 - Transfer pricing operational guidance_ Evidence gathering__ Searching for comparables_ UK or global companies_ - HMRC internal manual - GOV.UK.pdf",UK
+217,"INTM485100 - Transfer pricing operational guidance_ Evidence gathering_ Searching for comparables_ using commercial databases - HMRC internal manual - GOV.UK.pdf",UK
+218,"INTM485110 - Transfer pricing operational guidance_ Evidence gathering_ Searching for comparables_ making adjustments to potential comparables - HMRC internal manual - GOV.UK.pdf",UK
+219,"INTM485120 - Transfer pricing operational guidance_ Evidence gathering_ Searching for comparables_ range of results - HMRC internal manual - GOV.UK.pdf",UK
+220,"INTM485130 - Transfer pricing operational guidance_ Evidence gathering_ Industry standards - HMRC internal manual - GOV.UK.pdf",UK
+221,"INTM485140 - Transfer pricing operational guidance_ Evidence gathering_ General research - HMRC internal manual - GOV.UK.pdf",UK
+222,"INTM486010 - Transfer pricing_ operational guidance_ interaction with indirect taxes_ interaction with VAT - HMRC internal manual - GOV.UK.pdf",UK
+223,"INTM489520 - Diverted Profits Tax_ introduction and overview_ overview - HMRC internal manual - GOV.UK.pdf",UK
+224,"INTM489530 - Diverted Profits Tax_ introduction and overview_ recent changes to the legislation - HMRC internal manual - GOV.UK.pdf",UK
+225,"INTM489540 - Diverted Profits Tax_ introduction and overview_ who is affected - HMRC internal manual - GOV.UK.pdf",UK
+226,"INTM489550 - Diverted Profits Tax_ introduction and overview_ customer engagement with HMRC - HMRC internal manual - GOV.UK.pdf",UK
+227,"INTM489560 - Diverted Profits Tax_ introduction and overview_ the Diverted Profits Tax charge - HMRC internal manual - GOV.UK.pdf",UK
+228,"INTM489570 - Diverted Profits Tax_ introduction and overview_ process and procedure - HMRC internal manual - GOV.UK.pdf",UK
+229,"INTM489833 - Diverted Profits Tax_ customer engagement with HMRC_ introduction - HMRC internal manual - GOV.UK.pdf",UK
+230,"INTM489836 - Diverted Profits Tax_ customer engagement with HMRC_ initial contact between customers and HMRC - HMRC internal manual - GOV.UK.pdf",UK
+231,"INTM489839 - Diverted Profits Tax_ customer engagement with HMRC_ Diverted Profits Tax - internal advice and support network for case workers and CCMs - HMRC internal manual - GOV.UK.pdf",UK
+232,"INTM489842 - Diverted Profits Tax_ customer engagement with HMRC_ informal discussions between HMRC and customers - HMRC internal manual - GOV.UK.pdf",UK
+233,"INTM489845 - Diverted Profits Tax_ customer engagement with HMRC_ informal engagement about Diverted Profits Tax - HMRC internal manual - GOV.UK.pdf",UK
+234,"INTM489848 - Diverted Profits Tax_ customer engagement with HMRC_ no formal statutory or non-statutory clearance procedure for Diverted Profits Tax - HMRC internal manual - GOV.UK.pdf",UK
+235,"INTM489851 - Diverted Profits Tax_ customer engagement with HMRC_ what an initial informal discussion should cover - HMRC internal manual - GOV.UK.pdf",UK
+236,"INTM489854 - Diverted Profits Tax_ customer engagement with HMRC_ seeking information from other sources - HMRC internal manual - GOV.UK.pdf",UK
+237,"INTM489857 - Diverted Profits Tax_ customer engagement with HMRC_ detailed risk reviews – operational approach - HMRC internal manual - GOV.UK.pdf",UK
+238,"INTM489860 - Diverted Profits Tax_ customer engagement with HMRC_ notification - HMRC internal manual - GOV.UK.pdf",UK
+239,"INTM489863 - Diverted Profits Tax_ customer engagement with HMRC_ Advance Pricing Agreements do not extend to Diverted Profits Tax - HMRC internal manual - GOV.UK.pdf",UK
+240,"INTM489866 - Diverted Profits Tax_ customer engagement with HMRC_ how Advance Pricing Agreements in force at 1 April 2015 interact with Diverted Profits Tax - HMRC internal manual - GOV.UK.pdf",UK
+241,"INTM489869 - Diverted Profits Tax_ customer engagement with HMRC_ Advance Pricing Agreements entered into after the introduction of Diverted Profits Tax - HMRC internal manual - GOV.UK.pdf",UK
+242,"INTM489872 - Diverted Profits Tax_ customer engagement with HMRC_ Advance Pricing Agreements concluded for periods ending before 1 April 2015 - HMRC internal manual - GOV.UK.pdf",UK
+243,"INTM489875 - Diverted Profits Tax_ customer engagement with HMRC_ Diverted Profits Tax and Advance Thin Capitalisation Agreements - HMRC internal manual - GOV.UK.pdf",UK
+244,"INTM489878 - Diverted Profits Tax_ customer engagement with HMRC_ Diverted Profits Tax and Treaties - HMRC internal manual - GOV.UK.pdf",UK
+245,"INTM489882 - Diverted Profits Tax_ notification, charging and payment_ introduction – what companies need to do - HMRC internal manual - GOV.UK.pdf",UK
+246,"INTM489884 - Diverted Profits Tax_ notification, charging and payment_ outline of the Diverted Profits Tax process - HMRC internal manual - GOV.UK.pdf",UK
+247,"INTM489886 - Diverted Profits Tax_ notification, charging and payment_ duty to notify if potentially within the scope of Diverted Profits Tax - who must notify - HMRC internal manual - GOV.UK.pdf",UK
+248,"INTM489888 - Diverted Profits Tax_ notification, charging and payment_ situations where notification is not required - HMRC internal manual - GOV.UK.pdf",UK
+249,"INTM489890 - Diverted Profits Tax_ notification, charging and payment_ time limits and penalties - HMRC internal manual - GOV.UK.pdf",UK
+250,"INTM489892 - Diverted Profits Tax_ notification, charging and payment_ failure to notify penalties - HMRC internal manual - GOV.UK.pdf",UK
+251,"INTM489894 - Diverted Profits Tax_ notification, charging and payment_ interaction with Corporation Tax penalties - HMRC internal manual - GOV.UK.pdf",UK
+252,"INTM489896 - Diverted Profits Tax_ notification, charging and payment_ accounting period - HMRC internal manual - GOV.UK.pdf",UK
+253,"INTM489898 - Diverted Profits Tax_ notification, charging and payment_ how to notify - HMRC internal manual - GOV.UK.pdf",UK
+254,"INTM489900 - Diverted Profits Tax_ notification, charging and payment_ raising a Diverted Profits Tax charge – overview - HMRC internal manual - GOV.UK.pdf",UK
+255,"INTM489902 - Diverted Profits Tax_ notification, charging and payment_ when a preliminary notice must be issued - HMRC internal manual - GOV.UK.pdf",UK
+256,"INTM489904 - Diverted Profits Tax_ notification, charging and payment_ issuing the preliminary notice - HMRC internal manual - GOV.UK.pdf",UK
+257,"INTM489906 - Diverted Profits Tax_ notification, charging and payment_ content of the preliminary notice - HMRC internal manual - GOV.UK.pdf",UK
+258,"INTM489908 - Diverted Profits Tax_ notification, charging and payment_ representations following a preliminary notice - HMRC internal manual - GOV.UK.pdf",UK
+259,"INTM489910 - Diverted Profits Tax_ notification, charging and payment_ charging notice - HMRC internal manual - GOV.UK.pdf",UK
+260,"INTM489912 - Diverted Profits Tax_ notification, charging and payment_ timing - HMRC internal manual - GOV.UK.pdf",UK
+261,"INTM489914 - Diverted Profits Tax_ notification, charging and payment_ who issues the notice - HMRC internal manual - GOV.UK.pdf",UK
+262,"INTM489916 - Diverted Profits Tax_ notification, charging and payment_ who should be issued with the charging notice - HMRC internal manual - GOV.UK.pdf",UK
+263,"INTM489918 - Diverted Profits Tax_ notification, charging and payment_ what should be included in the charging notice - HMRC internal manual - GOV.UK.pdf",UK
+264,"INTM489920 - Diverted Profits Tax_ notification, charging and payment_ review period - HMRC internal manual - GOV.UK.pdf",UK
+265,"INTM489922 - Diverted Profits Tax_ notification, charging and payment_ designating the end of the review period - HMRC internal manual - GOV.UK.pdf",UK
+266,"INTM489924 - Diverted Profits Tax_ notification, charging and payment_ amending a charging notice - HMRC internal manual - GOV.UK.pdf",UK
+267,"INTM489926 - Diverted Profits Tax_ notification, charging and payment_ supplementary charging notice - HMRC internal manual - GOV.UK.pdf",UK
+268,"INTM489928 - Diverted Profits Tax_ notification, charging and payment_ who should be issued with a supplementary charging notice - HMRC internal manual - GOV.UK.pdf",UK
+269,"INTM489930 - Diverted Profits Tax_ notification, charging and payment_ content of a supplementary charging notice - HMRC internal manual - GOV.UK.pdf",UK
+270,"INTM489932 - Diverted Profits Tax_ notification, charging and payment_ payment of tax charged as a result of a supplementary charging notice - HMRC internal manual - GOV.UK.pdf",UK
+271,"INTM489934 - Diverted Profits Tax_ notification, charging and payment_ amending a supplementary charging notice - HMRC internal manual - GOV.UK.pdf",UK
+272,"INTM489936 - Diverted Profits Tax_ notification, charging and payment_ who issues the supplementary charging notices and amending notices - HMRC internal manual - GOV.UK.pdf",UK
+273,"INTM489938 - Diverted Profits Tax_ notification, charging and payment_ appeals against charging notices and supplementary charging notices - HMRC internal manual - GOV.UK.pdf",UK
+274,"INTM489940 - Diverted Profits Tax_ notification, charging and payment_ information and inspection powers - HMRC internal manual - GOV.UK.pdf",UK
+275,"INTM489942 - Diverted Profits Tax_ notification, charging and payment_ payment of tax – overview - HMRC internal manual - GOV.UK.pdf",UK
+276,"INTM489944 - Diverted Profits Tax_ notification, charging and payment_ postponement of tax - HMRC internal manual - GOV.UK.pdf",UK
+277,"INTM489946 - Diverted Profits Tax_ notification, charging and payment_ no deduction for Diverted Profits Tax against profits or income - HMRC internal manual - GOV.UK.pdf",UK
+278,"INTM489948 - Diverted Profits Tax_ notification, charging and payment_ taxes that can be credited against Diverted Profits Tax - HMRC internal manual - GOV.UK.pdf",UK
+279,"INTM489950 - Diverted Profits Tax_ notification, charging and payment_ controlled foreign companies charges - HMRC internal manual - GOV.UK.pdf",UK
+280,"INTM489952 - Diverted Profits Tax_ notification, charging and payment_ process for collecting tax - HMRC internal manual - GOV.UK.pdf",UK
+281,"INTM489954 - Diverted Profits Tax_ notification, charging and payment_ collection of tax from a non-UK resident - HMRC internal manual - GOV.UK.pdf",UK
+282,"INTM489956 - Diverted Profits Tax_ notification, charging and payment_ collection of tax from a related company - HMRC internal manual - GOV.UK.pdf",UK
+283,"INTM489958 - Diverted Profits Tax_ notification, charging and payment_ serving a notice on the related company - HMRC internal manual - GOV.UK.pdf",UK
+284,"INTM489960 - Diverted Profits Tax_ notification, charging and payment_ appeals by a related company - HMRC internal manual - GOV.UK.pdf",UK
+285,"INTM489962 - Diverted Profits Tax_ notification, charging and payment_ amount of Diverted Profits Tax paid by a related company in a consortium case - HMRC internal manual - GOV.UK.pdf",UK
+286,"INTM489964 - Diverted Profits Tax_ notification, charging and payment_ related company’s right to reimbursement - HMRC internal manual - GOV.UK.pdf",UK
+287,"INTM489966 - Diverted Profits Tax_ notification, charging and payment_ no tax deduction for Diverted Profits Tax paid by a related company - HMRC internal manual - GOV.UK.pdf",UK
+288,"INTM489968 - Diverted Profits Tax_ notification, charging and payment_ interest - HMRC internal manual - GOV.UK.pdf",UK
+289,"INTM489970 - Diverted Profits Tax_ notification, charging and payment_ True Up interest - HMRC internal manual - GOV.UK.pdf",UK
+290,"INTM489972 - Diverted Profits Tax_ notification, charging and payment_ late payment interest - HMRC internal manual - GOV.UK.pdf",UK
+291,"INTM489974 - Diverted Profits Tax_ notification, charging and payment_ penalties - HMRC internal manual - GOV.UK.pdf",UK
+292,"INTM489977 - Diverted Profits Tax_ imposing a charge – procedure and governance_ overview - HMRC internal manual - GOV.UK.pdf",UK
+293,"INTM489978 - Diverted Profits Tax_ imposing a charge – procedure and governance_ identifying potential Diverted Profits Tax cases - HMRC internal manual - GOV.UK.pdf",UK
+294,"INTM489979 - Diverted Profits Tax_ imposing a charge – procedure and governance_ time limits within the Diverted Profits Tax legislation - HMRC internal manual - GOV.UK.pdf",UK
+295,"INTM489980 - Diverted Profits Tax_ imposing a charge – procedure and governance_ engagement during the review period - HMRC internal manual - GOV.UK.pdf",UK
+296,"INTM489981 - Diverted Profits Tax_ imposing a charge – procedure and governance_ preliminary notice - HMRC internal manual - GOV.UK.pdf",UK
+297,"INTM489982 - Diverted Profits Tax_ imposing a charge – procedure and governance_ representations following a preliminary notice - HMRC internal manual - GOV.UK.pdf",UK
+298,"INTM489983 - Diverted Profits Tax_ imposing a charge – procedure and governance_ charging notice - HMRC internal manual - GOV.UK.pdf",UK
+299,"INTM489984 - Diverted Profits Tax_ imposing a charge – procedure and governance_ process for collecting tax - HMRC internal manual - GOV.UK.pdf",UK
+300,"INTM489985 - Diverted Profits Tax_ imposing a charge – procedure and governance_ review period - HMRC internal manual - GOV.UK.pdf",UK
+301,"INTM489986 - Diverted Profits Tax_ imposing a charge – procedure and governance_ designating the end of the review period - HMRC internal manual - GOV.UK.pdf",UK
+302,"INTM489987 - Diverted Profits Tax_ imposing a charge – procedure and governance_ supplementary charging notices and amending notices - HMRC internal manual - GOV.UK.pdf",UK
+303,"INTM489988 - Diverted Profits Tax_ imposing a charge – procedure and governance_ bringing taxable diverted profits into charge to corporation tax - HMRC internal manual - GOV.UK.pdf",UK
+304,"INTM489989 - Diverted Profits Tax_ imposing a charge – procedure and governance_ appeals against charging notices and supplementary charging notices - HMRC internal manual - GOV.UK.pdf",UK
+305,"INTM489990 - Diverted Profits Tax_ imposing a charge – procedure and governance_ information and inspection powers - HMRC internal manual - GOV.UK.pdf",UK
+306,"INTM489991 - Diverted Profits Tax_ imposing a charge – procedure and governance_ interaction with other legislation - HMRC internal manual - GOV.UK.pdf",UK
+307,"INTM489992 - Diverted Profits Tax_ imposing a charge – procedure and governance_ governance - HMRC internal manual - GOV.UK.pdf",UK
+308,"INTM489996 - Diverted Profits Tax_ appendix A - notification template guidance - HMRC internal manual - GOV.UK.pdf",UK
+309,"INTM489998 - Diverted Profits Tax_ appendix B - notification template - HMRC internal manual - GOV.UK.pdf",UK
+310,"INTM501010 - Interest imputation_ transfer pricing the lender_ tax implications of outward lending - HMRC internal manual - GOV.UK.pdf",UK
+311,"INTM501020 - Interest imputation_ transfer pricing the lender_ detecting and evaluating loans to connected parties - HMRC internal manual - GOV.UK.pdf",UK
+312,"INTM501030 - Interest imputation_ transfer pricing the lender_ information gathering on outward loan cases - HMRC internal manual - GOV.UK.pdf",UK
+313,"INTM501040 - Interest imputation_ transfer pricing the lender_ working a case - HMRC internal manual - GOV.UK.pdf",UK
+314,"INTM501050 - Interest imputation_ transfer pricing the lender_ implicit and explicit loan guarantees - HMRC internal manual - GOV.UK.pdf",UK
+315,"INTM501060 - Interest imputation_ transfer pricing the lender_ treatment of exchange differences - HMRC internal manual - GOV.UK.pdf",UK
+316,"INTM502010 - Interest imputation_ dealing with ‘equity function’ arguments_ Introduction - HMRC internal manual - GOV.UK.pdf",UK
+317,"INTM502020 - Interest imputation_ dealing with ‘equity function’ arguments_ HMRC response - HMRC internal manual - GOV.UK.pdf",UK
+318,"INTM502030 - Interest imputation_ dealing with ‘equity function’ arguments_ Preparatory work - HMRC internal manual - GOV.UK.pdf",UK
+319,"INTM502040 - Interest imputation_ dealing with ‘equity function’ arguments_ Working a case - HMRC internal manual - GOV.UK.pdf",UK
+320,"INTM502050 - Issues affecting equity function cases - HMRC internal manual - GOV.UK.pdf",UK
+321,"INTM502060 - Interest imputation_ dealing with ‘equity function’ arguments_ referrals to Business, Assets & International - HMRC internal manual - GOV.UK.pdf",UK
+322,"INTM503010 - Intra-group funding_ group finance companies and the treasury function_ Introduction - HMRC internal manual - GOV.UK.pdf",UK
+323,"INTM503020 - Intra-group funding_ group finance companies and the treasury function_ Types of company - HMRC internal manual - GOV.UK.pdf",UK
+324,"INTM503030 - Intra-group funding_ group finance companies and the treasury function_ Centralising the finance function - commercial considerations - HMRC internal manual - GOV.UK.pdf",UK
+325,"INTM503040 - Intra-group funding_ group finance companies and the treasury function_ Centralising the finance function_ tax considerations - HMRC internal manual - GOV.UK.pdf",UK
+326,"INTM503050 - Intra-group funding_ group finance companies and the treasury function_ Risk assessment - HMRC internal manual - GOV.UK.pdf",UK
+327,"INTM503060 - Intra-group funding_ group finance companies and the treasury function_ Thin capitalisation risk assessment - HMRC internal manual - GOV.UK.pdf",UK
+328,"INTM503070 - Intra-group funding_ group finance companies and the treasury function_ Functional analysis - HMRC internal manual - GOV.UK.pdf",UK
+329,"INTM503080 - Intra-group funding_ group finance companies and the treasury function_ Applying a transfer pricing method - HMRC internal manual - GOV.UK.pdf",UK
+330,"INTM503110 - Cash pooling_ Introduction to cash pooling - HMRC internal manual - GOV.UK.pdf",UK
+331,"INTM503120 - Cash pooling_ Legal and commercial arrangements - HMRC internal manual - GOV.UK.pdf",UK
+332,"INTM503130 - Cash pooling_ setting interest rates for participants on an arm_s length basis - HMRC internal manual - GOV.UK.pdf",UK
+333,"INTM503140 - Cash pooling_ short term and long term balances held in the cash pool - HMRC internal manual - GOV.UK.pdf",UK
+334,"INTM503150 - Cash pooling_ UK company as long term depositor in the cash pool - HMRC internal manual - GOV.UK.pdf",UK
+335,"INTM503160 - Cash pooling_ UK company as long-term borrower in the cash pool - HMRC internal manual - GOV.UK.pdf",UK
+336,"INTM503170 - Cash pooling_ UK company as the cash pool header - HMRC internal manual - GOV.UK.pdf",UK
+337,"INTM503180 - Cash pooling_ UK company as the cash pool header and the arm’s length principle - HMRC internal manual - GOV.UK.pdf",UK
+338,"INTM503190 - Cash pooling_ netting considerations - HMRC internal manual - GOV.UK.pdf",UK
+339,"INTM503200 - Cash pooling_ risk assessment_compliance checks - HMRC internal manual - GOV.UK.pdf",UK
+340,"INTM504010 - Double taxation treaties_ Beneficial ownership_ Treaty shopping - HMRC internal manual - GOV.UK.pdf",UK
+341,"INTM504020 - Double taxation treaties_ Beneficial ownership_ Importance of beneficial ownership - HMRC internal manual - GOV.UK.pdf",UK
+342,"INTM504030 - Double taxation treaties_ Beneficial ownership_ What beneficial ownership means - HMRC internal manual - GOV.UK.pdf",UK
+343,"INTM504040 - Double taxation treaties_ Beneficial ownership_ Conduit companies - HMRC internal manual - GOV.UK.pdf",UK
+344,"INTM504050 - Double taxation treaties_ Beneficial ownership_ Practical consideration of claims - HMRC internal manual - GOV.UK.pdf",UK
+345,"INTM511010 - Thin capitalisation_ practical guidance_ introduction_ the aims of this module - HMRC internal manual - GOV.UK.pdf",UK
+346,"INTM511015 - Thin capitalisation_ practical guidance_ introduction_ what is thin capitalisation_ - HMRC internal manual - GOV.UK.pdf",UK
+347,"INTM511020 - Thin capitalisation_ practical guidance_ introduction_ the aims of thin cap work - HMRC internal manual - GOV.UK.pdf",UK
+348,"INTM511030 - Thin capitalisation_ practical guidance_ introduction_ forms of borrowing - HMRC internal manual - GOV.UK.pdf",UK
+349,"INTM511035 - Thin capitalisation_ practical guidance_ introduction_ Critical features of debt and their interdependence - HMRC internal manual - GOV.UK.pdf",UK
+350,"INTM511040 - Thin capitalisation_ practical guidance_ introduction_ getting help with thin capitalisation cases - HMRC internal manual - GOV.UK.pdf",UK
+351,"INTM511050 - Thin capitalisation_ practical guidance_ introduction_ referrals to Business, Assets & International - HMRC internal manual - GOV.UK.pdf",UK
+352,"INTM512010 - Thin capitalisation_ practical guidance_ the Advance Thin Capitalisation Agreement process_ Introduction to the ATCA process and its governance - HMRC internal manual - GOV.UK.pdf",UK
+353,"INTM512020- Thin capitalisation_ practical guidance_the Advance Thin Capitalisation Agreement process_when can ATCA application be made, and what periods can it apply toHMRC internal manual GOV.UK.pdf",UK
+354,"INTM512030 - Thin capitalisation_ practical guidance_ the Advance Thin Capitalisation Agreement process_ what types of transactions are within the ATCA regime_ - HMRC internal manual - GOV.UK.pdf",UK
+355,"INTM512050 - Thin capitalisation_ practical guidance_ the Advance Thin Capitalisation Agreement process_ presenting an ATCA application - information and analysis - HMRC internal manual - GOV.UK.pdf",UK
+356,"INTM512060 - Thin capitalisation_ practical guidance_ the Advance Thin Capitalisation Agreement process_ role of Business, Assets & International - HMRC internal manual - GOV.UK.pdf",UK
+357,"INTM512070 - Thin capitalisation_ practical guidance_ the Advance Thin Capitalisation Agreement process_ criteria for acceptance of an ATCA application - HMRC internal manual - GOV.UK.pdf",UK
+358,"INTM512075 - Thin capitalisation_ practical guidance_ the Advance Thin Capitalisation Agreement process_ setting up an ATCA - HMRC internal manual - GOV.UK.pdf",UK
+359,"INTM512080 - Thin capitalisation_ practical guidance_ the Advance Thin Capitalisation Agreement process_ withdrawing from the ATCA process - HMRC internal manual - GOV.UK.pdf",UK
+360,"INTM512100 - Thin capitalisation_ practical guidance_ the Advance Thin Capitalisation Agreement process_ completing the process - HMRC internal manual - GOV.UK.pdf",UK
+361,"INTM512110 - Thin capitalisation_ practical guidance_ the Advance Thin Capitalisation Agreement process_ renewing the ATCA - HMRC internal manual - GOV.UK.pdf",UK
+362,"INTM513010 - Thin capitalisation_ practical guidance_ opening a case_ where the case begins - HMRC internal manual - GOV.UK.pdf",UK
+363,"INTM513020 - Thin capitalisation_ practical guidance_ opening a case_ gathering preliminary information - HMRC internal manual - GOV.UK.pdf",UK
+364,"INTM513030 - Thin capitalisation_ practical guidance_ opening a case_ reasons for not taking up a case - HMRC internal manual - GOV.UK.pdf",UK
+365,"INTM513040 - Thin capitalisation_ practical guidance_ opening a case_ other issues and where to look for them - HMRC internal manual - GOV.UK.pdf",UK
+366,"INTM513050 - Thin capitalisation_ practical guidance_ opening a case_ risk assessment - indicators of risk - HMRC internal manual - GOV.UK.pdf",UK
+367,"INTM513060 - Thin capitalisation_ practical guidance_ opening a case_ origins and destinations of debt - HMRC internal manual - GOV.UK.pdf",UK
+368,"INTM513070 - Thin capitalisation_ practical guidance_ opening a case_ pre-return enquiries - no informal comfort - HMRC internal manual - GOV.UK.pdf",UK
+369,"INTM513080 - Thin capitalisation_ practical guidance_ opening a case_ the opening meeting - HMRC internal manual - GOV.UK.pdf",UK
+370,"INTM514010 - Thin capitalisation_ practical guidance_ knowledge and negotiation_ getting to know the business - HMRC internal manual - GOV.UK.pdf",UK
+371,"INTM514020 - Thin capitalisation_ practical guidance_ knowledge and negotiation_ getting to know similar businesses - comparables - HMRC internal manual - GOV.UK.pdf",UK
+372,"INTM514030 - Thin capitalisation_ practical guidance_ knowledge and negotiation_ formulating an arm_s length position - comparables and OECD guidance - HMRC internal manual - GOV.UK.pdf",UK
+373,"INTM514040 - Thin capitalisation_ practical guidance_ knowledge and negotiation_ negotiating a solution - HMRC internal manual - GOV.UK.pdf",UK
+374,"INTM515010 - Thin capitalisation_ practical guidance_ measuring earnings_ measuring borrowing capacity - HMRC internal manual - GOV.UK.pdf",UK
+375,"INTM515020 - Thin capitalisation_ practical guidance_ measuring earnings_ earnings before interest and tax (EBIT) - HMRC internal manual - GOV.UK.pdf",UK
+376,"INTM515030 - Thin capitalisation_ practical guidance_ measuring earnings_ earnings before interest, tax, depreciation and amortisation (EBITDA) - HMRC internal manual - GOV.UK.pdf",UK
+377,"INTM515040 - Thin capitalisation_ practical guidance_ measuring earnings_ the effect of depreciation - HMRC internal manual - GOV.UK.pdf",UK
+378,"INTM515050 - Thin capitalisation_ practical guidance_ measuring earnings_ the effect of amortisation - HMRC internal manual - GOV.UK.pdf",UK
+379,"INTM515060 - Thin capitalisation_ practical guidance_ measuring earnings_ exceptional items and unforeseen events - HMRC internal manual - GOV.UK.pdf",UK
+380,"INTM515070 - Thin capitalisation_ practical guidance_ measuring earnings_ the effect of accounting issues - HMRC internal manual - GOV.UK.pdf",UK
+381,"INTM516010 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ what interest cover means - HMRC internal manual - GOV.UK.pdf",UK
+382,"INTM516020 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ matters of interest - HMRC internal manual - GOV.UK.pdf",UK
+383,"INTM516025 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ discounted debt and convertible debt - HMRC internal manual - GOV.UK.pdf",UK
+384,"INTM516030 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ factors affecting the interest rate - HMRC internal manual - GOV.UK.pdf",UK
+385,"INTM516035 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ LIBOR (London Interbank Offered Rate) replaced by SONIA and Short-Maturity Treasury Debt Issues - HMRC internal manual - GOV.UK.pdf",UK
+386,"INTM516040 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ other measures of interest cover_ netting - HMRC internal manual - GOV.UK.pdf",UK
+387,"INTM516050 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ what is an acceptable arm_s length standard_ - HMRC internal manual - GOV.UK.pdf",UK
+388,"INTM516060 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ example of an interest cover calculation - HMRC internal manual - GOV.UK.pdf",UK
+389,"INTM516070 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ cash flow and cash flow covenants - HMRC internal manual - GOV.UK.pdf",UK
+390,"INTM516080 - Thin capitalisation_ practical guidance_ interest cover - debt servicing_ measuring cash flow sufficiency to pay interest and repay capital - HMRC internal manual - GOV.UK.pdf",UK
+391,"INTM517010 - Thin capitalisation_ practical guidance_ measuring debt_ debt-based ratios (gearing or leverage) - HMRC internal manual - GOV.UK.pdf",UK
+392,"INTM517020 - Thin capitalisation_ practical guidance_ measuring debt_ what is debt_ - HMRC internal manual - GOV.UK.pdf",UK
+393,"INTM517030 - Thin capitalisation_ practical guidance_ measuring debt_ what is equity_ - HMRC internal manual - GOV.UK.pdf",UK
+394,"INTM517040 - Thin capitalisation_ practical guidance_ measuring debt_ what is an acceptable arm_s length standard_ - HMRC internal manual - GOV.UK.pdf",UK
+395,"INTM517050 - Thin capitalisation_ practical guidance_ measuring debt_ the UK borrowing unit - HMRC internal manual - GOV.UK.pdf",UK
+396,"INTM517060 - Thin capitalisation_ practical guidance_ measuring debt_ how the nature of the commercial activity influences the level of debt - HMRC internal manual - GOV.UK.pdf",UK
+397,"INTM517070 - Thin capitalisation_ practical guidance_ measuring debt_ Private Finance Initiative (PFI) companies - HMRC internal manual - GOV.UK.pdf",UK
+398,"INTM517080 - Thin capitalisation_ practical guidance_ measuring debt_ groups_companies in expansion mode - HMRC internal manual - GOV.UK.pdf",UK
+399,"INTM517090 - Thin capitalisation_ practical guidance_ measuring debt_ groups_companies in acquisition mode - HMRC internal manual - GOV.UK.pdf",UK
+400,"INTM517100 - Thin capitalisation_ practical guidance_ measuring debt_ groups with mixed activities - HMRC internal manual - GOV.UK.pdf",UK
+401,"INTM517110 - Thin capitalisation_ practical guidance_ measuring debt_ example_ the components of a debt_ equity ratio calculation - HMRC internal manual - GOV.UK.pdf",UK
+402,"INTM517120 - Thin capitalisation_ practical guidance_ measuring debt_ adjusting debt calculations_ netting off of debt - HMRC internal manual - GOV.UK.pdf",UK
+403,"INTM517130 - Thin capitalisation_ practical guidance_ measuring debt_ adjusting debt calculations_ netting off of cash - HMRC internal manual - GOV.UK.pdf",UK
+404,"INTM518010 - Thin capitalisation_ practical guidance_ lending against asset values_ lending against assets in general - HMRC internal manual - GOV.UK.pdf",UK
+405,"INTM518020 - Thin capitalisation_ practical guidance_ lending against asset values_ lending against tangible assets - assets other than buildings and land - HMRC internal manual - GOV.UK.pdf",UK
+406,"INTM518030 - Thin capitalisation_ practical guidance_ lending against asset values_ lending against tangible assets - land and buildings - HMRC internal manual - GOV.UK.pdf",UK
+407,"INTM518040 - Thin capitalisation_ practical guidance_ lending against asset values_ UK third-party practices - loan to value ratios in property lending - HMRC internal manual - GOV.UK.pdf",UK
+408,"INTM518050 - Thin capitalisation_ practical guidance_ lending against asset values_ UK third party practices - interest rate margins in property lending - HMRC internal manual - GOV.UK.pdf",UK
+409,"INTM518060 - Thin capitalisation_ practical guidance_ lending against asset values_ offshore property companies - HMRC internal manual - GOV.UK.pdf",UK
+410,"INTM518070 - Thin capitalisation_ practical guidance_ lending against asset values_ property companies and the credit crisis - HMRC internal manual - GOV.UK.pdf",UK
+411,"INTM518080 - Thin capitalisation_ practical guidance_ lending against asset values_ lending against intangible assets - HMRC internal manual - GOV.UK.pdf",UK
+412,"INTM519010 - Thin capitalisation_ practical guidance_ private equity_ what is private equity_ - HMRC internal manual - GOV.UK.pdf",UK
+413,"INTM519020 - Thin capitalisation_ practical guidance_ private equity_ private equity buyout funding structures - HMRC internal manual - GOV.UK.pdf",UK
+414,"INTM519030 - Thin capitalisation_ practical guidance_ private equity_ typical debt elements of a private equity buyout - HMRC internal manual - GOV.UK.pdf",UK
+415,"INTM519035 - Thin capitalisation_ practical guidance_ private equity_ payment-in-kind (“PIK”) notes - HMRC internal manual - GOV.UK.pdf",UK
+416,"INTM519040 - Thin capitalisation_ practical guidance_ private equity_ applying the transfer pricing rules - “acting together” - HMRC internal manual - GOV.UK.pdf",UK
+417,"INTM519050 - Thin capitalisation_ practical guidance_ private equity_ issues to consider - HMRC internal manual - GOV.UK.pdf",UK
+418,"INTM519060 - Thin capitalisation_ practical guidance_ private equity_ risk assessment - the basics - HMRC internal manual - GOV.UK.pdf",UK
+419,"INTM519070 - Thin capitalisation_ practical guidance_ private equity_ working the case_ third party loan agreements - HMRC internal manual - GOV.UK.pdf",UK
+420,"INTM519080 - Thin capitalisation_ practical guidance_ private equity_ working the case_ other points - HMRC internal manual - GOV.UK.pdf",UK
+421,"INTM520010 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ introduction to the main features of the agreement - HMRC internal manual - GOV.UK.pdf",UK
+422,"INTM520020 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ maximum amount of debt - HMRC internal manual - GOV.UK.pdf",UK
+423,"INTM520030 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ interest rate - HMRC internal manual - GOV.UK.pdf",UK
+424,"INTM520040 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ length of the agreement - HMRC internal manual - GOV.UK.pdf",UK
+425,"INTM520050 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ covenant conditions - HMRC internal manual - GOV.UK.pdf",UK
+426,"INTM520060 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ consequences of a covenant breach - HMRC internal manual - GOV.UK.pdf",UK
+427,"INTM520070 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ covenant breaches and unforeseen circumstances - HMRC internal manual - GOV.UK.pdf",UK
+428,"INTM520080 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ monitoring conditions - HMRC internal manual - GOV.UK.pdf",UK
+429,"INTM520085 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ statement of practice 01_12 - HMRC internal manual - GOV.UK.pdf",UK
+430,"INTM520090 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ example of an agreement - the model ATCA - HMRC internal manual - GOV.UK.pdf",UK
+431,"INTM520100 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ Example of an agreement_ model ATCA - appendix 1 - interest cover ratio - HMRC internal manual - GOV.UK.pdf",UK
+432,"INTM520110 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ example of an agreement_ model ATCA - appendix 2 - gearing ratio - HMRC internal manual - GOV.UK.pdf",UK
+433,"INTM520120 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ example of an agreement_ model ATCA - appendix 3 - short accounting period - HMRC internal manual - GOV.UK.pdf",UK
+434,"INTM520130 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ example of an agreement_ model ACTA - commentary on the agreement - HMRC internal manual - GOV.UK.pdf",UK
+435,"INTM520140 - Thin capitalisation_ practical guidance_ creating agreements between HMRC and the group_ making a recommendation to the Double Taxation Treaty team on pre-ATCA cases - HMRC internal manual - GOV.UK.pdf",UK
+436,"INTM521010 - Thin capitalisation_ practical guidance_ breaches of agreements between HMRC and the group_ introduction to breaches - HMRC internal manual - GOV.UK.pdf",UK
+437,"INTM521020 - Thin capitalisation_ practical guidance_ breaches of agreements between HMRC and the group_ breaches and treaty clearance - HMRC internal manual - GOV.UK.pdf",UK
+438,"INTM521030 - Thin capitalisation_ practical guidance_ breaches of agreements between HMRC and the group_ remedying a breach for future periods - HMRC internal manual - GOV.UK.pdf",UK
+439,"INTM521040 - Thin capitalisation_ practical guidance_ breaches of agreements between HMRC and the group_ breach of covenant_ disallowing the interest deduction - HMRC internal manual - GOV.UK.pdf",UK
+440,"INTM521050 - Thin capitalisation_ practical guidance_ breaches of agreements between HMRC and the group_ other solutions - HMRC internal manual - GOV.UK.pdf",UK
+441,"INTM522010 - Thin capitalisation_ practical guidance_ third-party loan agreements_ the general form of third-party debt agreements - HMRC internal manual - GOV.UK.pdf",UK
+442,"INTM522020 - Thin capitalisation_ practical guidance_ third-party loan agreements_ syndicates of lenders - HMRC internal manual - GOV.UK.pdf",UK
+443,"INTM522030 - Thin capitalisation_ practical guidance_ third-party loan agreements_ the grossing up clause for withholding tax - HMRC internal manual - GOV.UK.pdf",UK
+444,"INTM522040 - Thin capitalisation_ practical guidance_ third-party debt agreements_ interest rates and related fees - HMRC internal manual - GOV.UK.pdf",UK
+445,"INTM523100 - Thin capitalisation_ practical guidance_ accountancy issues_ introduction_ accountancy impact on thin capitalisation - HMRC internal manual - GOV.UK.pdf",UK
+446,"INTM523150 - Thin capitalisation_ practical guidance_ accountancy issues_ International Financial Reporting Standards (IFRS) and UK Generally Accepted Accounting Practice (UK GAAP) - HMRC internal manual - GOV.UK.pdf",UK
+447,"INTM523160 - Thin capitalisation_ practical guidance_ accountancy issues_ acceptable GAAP for thin cap purposes - HMRC internal manual - GOV.UK.pdf",UK
+448,"INTM523170 - Thin capitalisation_ practical guidance_ accountancy issues_ impact of accounting on loan agreements - HMRC internal manual - GOV.UK.pdf",UK
+449,"INTM523180 - Thin capitalisation_ practical guidance_ accountancy issues_ the change in the treatment of preference shares under IFRS - HMRC internal manual - GOV.UK.pdf",UK
+450,"INTM523210 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS 17_ the impact of pensions accounting on thin capitalisation - HMRC internal manual - GOV.UK.pdf",UK
+451,"INTM523220 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS 17_ defined benefits and defined contributions schemes - HMRC internal manual - GOV.UK.pdf",UK
+452,"INTM523250 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS17_ retirement benefits - profit and loss account - HMRC internal manual - GOV.UK.pdf",UK
+453,"INTM523270 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS17_ retirement benefits - impact of current service costs - HMRC internal manual - GOV.UK.pdf",UK
+454,"INTM523280 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS17_ interest cost and expected rate of return on assets - HMRC internal manual - GOV.UK.pdf",UK
+455,"INTM523300 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS 17_ actuarial gains and losses - HMRC internal manual - GOV.UK.pdf",UK
+456,"INTM523310 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS 17_ non-recurring items (past service costs, settlements and curtailments) - HMRC internal manual - GOV.UK.pdf",UK
+457,"INTM523400 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS 17_ pension deficits and surpluses - HMRC internal manual - GOV.UK.pdf",UK
+458,"INTM523410 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS 17_ summary of the impact of FRS 17 on thin capitalisation - HMRC internal manual - GOV.UK.pdf",UK
+459,"INTM523420 - Thin capitalisation_ practical guidance_ accountancy issues_ FRS 17_ presentation of FRS17 in the accounts - disclosures - HMRC internal manual - GOV.UK.pdf",UK
+460,"INTM524010 - Thin capitalisation_ practical guidance_ the use of credit ratings_ what is a credit rating_ - HMRC internal manual - GOV.UK.pdf",UK
+461,"INTM524020 - Thin capitalisation_ practical guidance_ the use of credit ratings_ how do ratings agencies arrive at their ratings_ - HMRC internal manual - GOV.UK.pdf",UK
+462,"INTM524030 - Thin capitalisation_ practical guidance_ the use of credit ratings_ what are credit ratings used for by the market_ - HMRC internal manual - GOV.UK.pdf",UK
+463,"INTM524040 - Thin capitalisation_ practical guidance_ the use of credit ratings_ investment grade and non-investment grade credit ratings - HMRC internal manual - GOV.UK.pdf",UK
+464,"INTM524050 - Thin capitalisation_ practical guidance_ the use of credit ratings_ the distinction between ‘investment grade’ and ‘speculative grade’ - HMRC internal manual - GOV.UK.pdf",UK
+465,"INTM524060 - Thin capitalisation_ practical guidance_ the use of credit ratings_ important factors to consider when benchmarking using credit ratings - HMRC internal manual - GOV.UK.pdf",UK
+466,"INTM524070 - Thin capitalisation_ practical guidance_ the use of credit ratings_ in-house credit ratings - HMRC internal manual - GOV.UK.pdf",UK
+467,"INTM524080 - Thin capitalisation_ practical guidance_ the use of credit ratings_ further considerations when using credit ratings in thin capitalisation cases - HMRC internal manual - GOV.UK.pdf",UK
+468,"INTM539000 - International financial glossary - HMRC internal manual - GOV.UK.pdf",UK
+469,"Managing compliance risk for UK businesses (part 1) - GOV.UK.pdf",UK
+470,"Purpose, audience and use - GOV.UK.pdf",UK
+471,"Statement of Practice 1 (2018) - GOV.UK.pdf",UK
+472,"European Commission vs. UK, April 2019, European Commission, Case no C(2019) 2526 final .pdf",UK
+473,"UK vs BlackRock, April 2024, Court of Appeal, Case No [2024] EWCA Civ 330 (CA-2022-001918) .pdf",UK
+474,"UK vs BlackRock, July 2022, Upper Tribunal, Case No [2022] UKUT 00199 (TCC) .pdf",UK
+475,"UK vs Blackrock, November 2020, First-tier Tribunal, Case No TC07920 .pdf",UK
+476,"UK vs Bluecrest Capital Management, July 2020, First-Tier Tribunal – Tax Chamber, Case No TC07782 .pdf",UK
+477,"UK vs Irish Bank Resolution Corporation Limited and Irish Nationwide Building Society, August 2020, Court of Appeal , Case No [2020] EWCA Civ 1128.pdf",UK
+478,"UK vs Irish Bank Resolution Corporation Limited and Irish Nationwide Building Society, October 2019, UK Upper Tribunal, UKUT 0277 (TCC) .pdf",UK
+479,"UK vs JTI Acquisitions Company (2011) Ltd, August 2023, Upper Tribunal, Case No [2023] UKUT 00194 (TCC) .pdf",UK
+480,"UK vs Kwik-Fit, May 2024, Court of Appeal, Case No [2024] EWCA Civ 434 (CA-2023-000429) .pdf",UK
+481,"UK vs Oxford Instruments Ltd, April 2019, First-tier Tribunal, Case No. [2019] UKFTT 254 (TC) .pdf",UK
+482,"UK vs Refinitiv Limited, October 2023, Upper Tribunal, Case No [2023] UKUT 00257 (TCC) .pdf",UK
+483,"UK vs Refinitive and others (Thomson Reuters), November 2024, Court of Appeal, Case No [2024] EWCA Civ 1412 (CA-2023-002584) .pdf",UK
+484,"UK vs Royal Bank of Canada, February 2025, Supreme Court, Case No [2025] UKSC 2.pdf",UK
+485,"UK vs Union Castle Ltd, April 2020, UK Court of Appeal, Case No A3_2018_3003 and 3004 .pdf",UK
+486,"UK vs Union Castle Ltd, October 2018, UK Upper Tribunal, Case No 0316 (TCC) .pdf",UK
+487,"UK vs. DSG Retail (Dixon case), First-Tier Tax Tribunal, Case No. UKFT 31.pdf",UK
+488,"2018 APA Statutory Report.pdf",USA
+489,"2019 APA Statutory Report.pdf",USA
+490,"2019 APMA Statutory Report.pdf",USA
+491,"2020 APMA Statutory Report.pdf",USA
+492,"2021 APMA Statutory Report.pdf",USA
+493,"2022 APMA Statutory Report .pdf",USA
+494,"2023 APMA Statutory Report.pdf",USA
+495,"APAM Pre-filing Conference Request.pdf",USA
+496,"Best method review panel FAQs _ Internal Revenue Service.pdf",USA
+497,"Change to number of required copies for APA and MAP requests _ Internal Revenue Service.pdf",USA
+498,"Competent authority filing modifications and APMA APA consultations _ Internal Revenue Service.pdf",USA
+499,"Form 8975_Country-by-Country Report.pdf",USA
+500,"Frequently asked questions (FAQs) - Country-by-country reporting _ Internal Revenue Service.pdf",USA
+501,"Instructions for Form 8975 and Schedule A (Form 8975).pdf",USA
+502,"IRC §1.6662-6 & 7.pdf",USA
+503,"IRS Memorandum Number AM 2025-001_Periodic Adjustments and the Arm’s Length Stand.pdf",USA
+504,"Memorandum AM 2021-004.pdf",USA
+505,"Memorandum AM 2023-008_ Effect of Group Membership on Financial Transactions under Section 482 and Treas. Reg. § 1.482-2(a) .pdf",USA
+506,"Memorandum Number- AM 2022-006 .pdf",USA
+507,"Memorandum Number- AM2018-003.pdf",USA
+508,"MITT and APA frequently asked questions _ Internal Revenue Service.pdf",USA
+509,"MITT submission process for accepted taxpayers _ Internal Revenue Service.pdf",USA
+510,"MITT submission process for new applicants _ Internal Revenue Service.pdf",USA
+511,"Procedures for Advance Pricing Agreements.pdf",USA
+512,"Renewal of the Qualified Maquiladora Approach Agreement _ Internal Revenue Service.pdf",USA
+513,"Revenue Procedure 2017-23.pdf",USA
+514,"Sample Intercompany Transaction Summary.pdf",USA
+515,"SCHEDULE A (Form 8975).pdf",USA
+516,"TD 9773.pdf",USA
+517,"Transfer pricing documentation best practices frequently asked questions (FAQs) _ Internal Revenue Service.pdf",USA
+518,"Transfer Pricing Examination Process_P5300.pdf",USA
+519,"Treasury Regulations 1.482.pdf",USA
+520,"United States Dispute Resolution Profile (OECD).pdf",USA
+521,"Update to APA user fees _ Internal Revenue Service.pdf",USA
+522,"Berkowitz v. United States, May 1969, U.S. 5. Circuit, Case No. 411 F.2d 818, 820.pdf",USA
+523,"Georgia Pacific Corp vs. United States Plywood Corp, May 1970 (Civ. A. No. 99-195).pdf",USA
+524,"Gregory v. Helvering, January 1935, U.S. Supreme Court, Case No. 293 U.S. 465 (1935).pdf",USA
+525,"UK vs Cadbury- Schweppes, September 2006, European Court of Justice, Case C-196_04 .pdf",USA
+526,"US (New York State) vs Hallmark Marketing Corporation, January 2006, New York Tax Appeals Commission, DTA NO. 819956 .pdf",USA
+527,"US SOUTH DAKOTA v. WAYFAIR, INC., June 2018, US Supreme Court, Case No. 17-494 .pdf",USA
+528,"US vs 3M Company And Subsidiaries, February 2023, US Tax Court, 160 T.C. No. 3 (Docket No. 5816-13) .pdf",USA
+529,"US vs Altera Corp, July 2018, U.S. Court of Appeal, Nos 16-704996 .pdf",USA
+530,"US vs Altera Corp, June 7, 2019, U.S. Court of Appeal, Nos 16-70496 and 16-70497 .pdf",USA
+531,"US vs Altera Corp, June 2020, Supreme Court – review denied, Case no 19-1009 .pdf",USA
+532,"US vs Altera, July 2015, US Tax Court, Case No. 145 T.C. No 3 .pdf",USA
+533,"US vs Amazon, August 2019, US Court of Appeal Ninth Circut, Case No. 17-72922 .pdf",USA
+534,"US vs Aspro Inc., April 2022, Eight Circuit, No. 21-1996 .pdf",USA
+535,"US vs BAUSCH & LOMB INC, March 1989, US Tax Court Docket No 3394-86 .pdf",USA
+536,"US vs BAUSCH & LOMB INC, May 1991, United States Court of Appeals, No. 1428, Docket 89-4156. .pdf",USA
+537,"US vs Buyuk LLC and Beyazit LLC, November 2013, US Tax Court, Case No. 11051-10, 6853-12 .pdf",USA
+538,"US vs Cavallaro, October 2019, TC Memo 2019-144 .pdf",USA
+539,"US vs Coca Cola, August 2024, US Tax Court, Docket No. 31183-15.pdf",USA
+540,"US vs Coca Cola, Dec. 2017, US Tax Court, 149 T.C. No. 21 .pdf",USA
+541,"US vs Coca Cola, November 2020, US Tax Court, 155 T.C. No. 10 .pdf",USA
+542,"US vs Coca Cola, November 2023, US Tax Court, T.C. Memo. 2023-135.pdf",USA
+543,"US vs Coca Cola, October 2021, US Tax Court, T.C. Docket 31183-15 .pdf",USA
+544,"US vs Computervision. April 1991 Docket No. 17527-88.pdf",USA
+545,"US vs Container Corp., May 2011, U.S. Court of Appeals, No. 10-60515 .pdf",USA
+546,"US vs Dixie Dairies Corp., May 1980, U.S. Tax Court, 74 T.C. 476 (1980) Docket Nos. 3538-75, 3539-75, 10803-75, 1588-76, 1589-76 .pdf",USA
+547,"US vs E.I. Du Pont de Nemours & Co, October 1979, US Courts of Claims, Case No 608 F.2d 445 (Ct. Cls. 1979).pdf",USA
+548,"US vs Eaton Corp., August 2022, Sixth Circuit, Nos. 21-1569_2674 .pdf",USA
+549,"US vs EATON-CORPORATION, July 2017, US Tax Court, TC memo 2017-147 .pdf",USA
+550,"US vs Eaton, Oct. 2019, United States Tax Court, Docket No 5576-12 .pdf",USA
+551,"US vs Eli Lilly & Co, October 1998, United States Court of Appeals Nos. 86-2911, 86-3116.pdf",USA
+552,"US vs Estate of Mixon, July 1972, United States Court of Appeals, Fifth Circuit, 464 F.2d 394 .pdf",USA
+553,"US vs First Security Bank of Utah, March 1972, US Supreme Court, Case No. 70-305 .pdf",USA
+554,"US vs GlaxoSmithKlein, July 2001, United State Tax Court, Case No 117 T.C. No. 1 .pdf",USA
+555,"US vs GlaxoSmithKline Holdings, September 2006, IR-2006-142 .pdf",USA
+556,"US vs GSS HOLDINGS (LIBERTY) INC., September 2023, U.S. Court of Appeals, Case No. 21-2353 .pdf",USA
+557,"US vs Guidant Corporation, February 2016, US Tax Court, Case No 146 T.C. No. 5 .pdf",USA
+558,"US vs Hyatt Group Holding, Inc. and Subsidiaries, October 1999, United States Tax Court, No T.C. Memo. 1999-334 .pdf",USA
+559,"US vs International Paper. April 1995 No. 90-119T.pdf",USA
+560,"US vs Kenco Restaurants, Inc., February 2000, Sixth Circuit, Nos. 98-2416-98-2418, and 98-2420. .pdf",USA
+561,"US vs Laidlaw Transportation, Inc., June 1998, US Tax Court, Case No 75 T.C.M. 2598 (1998) .pdf",USA
+562,"US vs Medieval Attractions, 1996 October, US Tax Court, T.C. Memo. 1996-455 .pdf",USA
+563,"US vs Medtronic, August 2018, U.S. Court of Appeals, Case No- 17-1866 .pdf",USA
+564,"US vs Medtronic, August 2022, U.S. Tax Court, T.C. Memo. 2022-84 .pdf",USA
+565,"US vs Microsoft, May 2017, US District Court .pdf",USA
+566,"US vs Moline Properties Inc, June 1943, US Supreme Court, Case No 660 .pdf",USA
+567,"US vs National Westminster Bank PLC, January 2008, U.S. Court of Appeals, Case No. No. 2007-5028 .pdf",USA
+568,"US vs NESTLE HOLDINGS INC, July 1998, Court of Appeal, 2nd Circuit, Docket Nos 96-4158 and 96-4192 .pdf",USA
+569,"US vs Pacific management Group, August 2018, US Tax Court Case, Memo 2018-131 .pdf",USA
+570,"US vs PepsiCo, September 2012, US Tax Court, 155 T.C. Memo 2012-269 .pdf",USA
+571,"US vs Perkin-Elmer Corp. & Subs., September 1993, United States Tax Court, Case No. T.C. Memo. 1993-414 .pdf",USA
+572,"US vs Proctor & Gamble Co, April 1992, Court of Appeal (6th Cir.), Case No 961 F.2d 1255 Docket No. 91-1515, 91-1557.pdf",USA
+573,"US vs Proctor & Gamble, September 1990, US Tax Court, Opinion No. 16521-84. .pdf",USA
+574,"US vs Reserve Mechanical Corp, June 2018, US Tax Court, Case No. T.C. Memo 2018-86 .pdf",USA
+575,"US vs Santander Holding USA Inc, May 2017, Supreme Court, Case No. 16-1130 .pdf",USA
+576,"US vs Seagate Tech, 1994, US Tax Court 102 T.C. 149 Docket No. 11660-90.pdf",USA
+577,"US vs Seagate Technology, December 2000, United States Tax Court , Docket No. 15086-98.pdf",USA
+578,"US vs SIH Partners LLLP, May 2019, U.S. Court of Appeal, Case No 18-1862 .pdf",USA
+579,"US vs Skechers USA Inc., February 2023, Wisconsin Tax Appeals Commission, Nos. 10-I-171 AND 10-I-172 .pdf",USA
+580,"US vs Sundstrand Corp, Feb. 1991, United States Tax Court Docket No. 26230-83.pdf",USA
+581,"US vs TBL LICENSING LLC, January 2022, U.S. Tax Court, Case No. 158 T.C. No 1 (Docket No. 21146-15) .pdf",USA
+582,"US vs The Talbots Inc., March 2011, Massachusetts Appellate Tax Board, Case No 79 Mass. App. Ct. 159 .pdf",USA
+583,"US vs Tribune Media Company, October 2021, U.S. Tax Court, T.C. Memo. 2021-122 .pdf",USA
+584,"US vs Union Carbide, June 1998 Docket No. 3501-94.pdf",USA
+585,"US vs United States Steel Corporation, March 1980, United States Court of Appeals, Second Circuit, 617 F.2d 942 .pdf",USA
+586,"US vs United States Steel Corporation, May 1977, US Tax Court, T.C. Memo. 1977-140 Docket No. 5786-72.pdf",USA
+587,"US vs Wells Fargo, May 2017, District Court, Case No. 09-CV-2764 .pdf",USA
+588,"US vs Whirlpool, December 2021, U.S. Court of Appeals, Case No. Nos. 20-1899_1900 .pdf",USA
+589,"US vs Whirlpool, May 2020, US tax court, Case No. 13986-17 154 T.C. No 9 .pdf",USA
+590,"US vs Xilinx Inc, March 2010, U.S. Court of Appeal, Nos. 06-74246, 06-74269 .pdf",USA
+591,"US vs Xilinx Inc, May 27, 2009, U.S. Court of Appeals, Case No. 06-74546 .pdf",USA
+592,"US vs. Amazon, March 2017, US Tax Court, Case No. 148 T.C. No 8 .pdf",USA
+593,"US vs. Bankers Trust. September 2000  99-5066.pdf",USA
+594,"US vs. BMC Software, March 2015, U.S. Court of Appeals, Case No. 13-60684 .pdf",USA
+595,"US vs. BMC. January 1999 Civil Action No. H-98-2363.pdf",USA
+596,"US vs. Boing Co. March 2003, Supreme Court of Appeals  Case No. 01-1209.pdf",USA
+597,"US vs. Boston Scientific Corporation, July 2016 .pdf",USA
+598,"US vs. DHL. April 2002, U.S. Court of Appeals Docket Nos, 99-71580, 00-70008, 99-71592 and 99-71675.pdf",USA
+599,"US vs. Dow, January 1993, US Court of Appeals Docket No. 90-5150.pdf",USA
+600,"US vs. Exelon Corp, September 2016, US Tax Court .pdf",USA
+601,"US vs. Hewlett Packard, November 2017, U.S. Court of Appeals, Case No 14-73047 .pdf",USA
+602,"US vs. Medtronic Inc. June 2016, US Tax Court .pdf",USA
+603,"US vs. Microsoft Corp. February 1998  Tax Ct. Dkt. No. 16878-96.pdf",USA
+604,"US vs. National Semiconductor, May 1994, United States Tax Court Docket No. 4754-89, 8031-90.pdf",USA
+605,"US vs. Sherwin-Williams Company, October 2002, Massachusetts Supreme Judicial Court, Case No 438 Mass. 71 .pdf",USA
+606,"US vs. Veritas Software Corporation, December 2009, US Tax Court, Case No 133 T.C. 297, 316 .pdf",USA
+607,"US vs. Xilinex Inc, Docket Nos. 4142-01, 702-03. August 2005.pdf",USA
+608,"US-vs-Analog-Devices-Subsidiaries-Nov-22-2016-United-State-Tax-Court-147-TC-no-15 .pdf",USA
+609," Circular on the administrative principles on the parties’ obligation to cooperate and the estimation of tax bases and surcharges [ENG].pdf",Germany
+610," Circular on the requirements for country-by-country reports by multinational enterprise groups.pdf",Germany
+611," Decree Law on business restructurings (2022).pdf",Germany
+612," Information leaflet for competent authority and arbitration procedures (27 August 2021, BStBl. I 2021, at 1495.pdf",Germany
+613,"§ 90 AO - Obligations of the parties involved to cooperate.pdf",Germany
+614,"§ 138a Country-by-Country Report [ENG Translated].pdf",Germany
+615,"§ 162 AO - § 162  Estimation of tax bases [ENG Translated].pdf",Germany
+616,"§ 379 - Tax Endangerment [ENG Translated].pdf",Germany
+617,"Abgabenordnung (AO).pdf",Germany
+618,AStG.pdf,Germany
+619,BMF_Letter_27.09.2019,Germany
+620,"BsGaV - Regulation on the application of the ALP principle to permanent establishments [ENG Translated].pdf",Germany
+621,"BZSt - Country by Country Reporting [ENG Translated].pdf",Germany
+622,"Circular of 5 October 2006 on APA procedures (BStBl I 2006, 594).pdf",Germany
+623,"Circular of 11 July 2017 on the requirements for CbC reports by MNE groups.pdf",Germany
+624,"Circular of 27 September 2019 on the CbC reports by MNE groups.pdf",Germany
+625,"Decree Law on transfer pricing documentation.pdf",Germany
+626,"EGAO - Introductory Act to the Tax Code [ENG Translated].pdf",Germany
+627,"EU JOINT TRANSFER PRICING FORUM THE APPLICATION OF THE PROFIT SPLIT METHOD WITHIN THE EU.pdf",Germany
+628,"Fourth Act to Relief Bureaucracy for Citizens, Businesses and the Administration (Fourth Bureaucracy Relief Act_ BEG IV) was published in the Federal Law Gazette (BGBl. 2024 I No. 323).pdf",Germany
+629,"MAP Guidelines.pdf",Germany
+630,"Seventh Regulation Amending List of Jurisdictions Under Country-by-Country Reporting (CbC) .pdf",Germany
+631,"Updated Comprehensive Guidance on German Transfer Pricing Rules [VWG VP 2024].pdf",Germany
+632,"Verordnung zu Art, Inhalt und Umfang von Aufzeichnungen im Sinne des § 90 Absatz 3 der Abgabenordnung.pdf",Germany
+633,"Case No 1 K 1472_13.pdf",Germany
+634,"Case No 1 K 1595_20.pdf",Germany
+635,"Case No 2 BvR 1079_20.pdf",Germany
+636,"Case No 2 BvR 1161_19.pdf",Germany
+637,"Case No 2 K 750_19.pdf",Germany
+638,"Case No 2 V 827_21.pdf",Germany
+639,"Case No 3 K 1940_17 F.pdf",Germany
+640,"Case No 4 K 1053_11 E.pdf",Germany
+641,"Case No 6 K 578_06.pdf",Germany
+642,"Case No 6 K 1918_16.pdf",Germany
+643,"Case No 7 K 1938_22.pdf",Germany
+644,"Case No 10 K 117_20.pdf",Germany
+645,"Case No 10 K 310_19 (BFH Pending – I R 43_23).pdf",Germany
+646,"Case no 10 K 771_16.pdf",Germany
+647,"Case No 10 K 1406_18.pdf",Germany
+648,"Case No 14 K 588_20.pdf",Germany
+649,"Case No C-431_21.pdf",Germany
+650,"Case No I B 7_07.pdf",Germany
+651,"Case No I B 44_21.pdf",Germany
+652,"Case No I R 4_21.pdf",Germany
+653,"Case No I R 19_17.pdf",Germany
+654,"Case No I R 23_13.pdf",Germany
+655,"Case No I R 32_17.pdf",Germany
+656,"Case No I R 45_11.pdf",Germany
+657,"Case No I R 51_17.pdf",Germany
+658,"Case No I R 54_19.pdf",Germany
+659,"Case No I R 62_17.pdf",Germany
+660,"Case No I R 73_16.pdf",Germany
+661,"Case No I R 78_16.pdf",Germany
+662,"Case No IR 4_17.pdf",Germany
+663,"Case No IR 12_99.pdf",Germany
+664,"Case No IR 15_21.pdf",Germany
+665,"Case No IR 27_19.pdf",Germany
+666,"Case No IR 34_18.pdf",Germany
+667,"Case No IR 81_17.pdf",Germany
+668,"Case No IR 82_17.pdf",Germany
+669,"Case No IR 94_15.pdf",Germany
+670,"Case No IR 103_00.pdf",Germany
+671,"Case No VII R 2_19.pdf",Germany
+672,"Case No X B 37_11.pdf",Germany
+673,"Case No. I R 74-15.pdf",Germany
+674,"Federal Tax Court 11.10.2012, I R 75_11.pdf",Germany
+675,"Supreme Tax Court IV R 1 14.pdf",Germany
+676,"Supreme Tax Court judgment I R 57_13.pdf",Germany
+677,"Apply for an advance ruling on transfer pricing matters.pdf",Finland
+678,"Country-specific reporting – instructions on how to create csv files.pdf",Finland
+679,"Country-specific reporting of taxatio.pdf",Finland
+680,"Finalnd_International tax dispute resolution procedure.pdf",Finland
+681,"Finland_Advance Pricing Agreement (APA).pdf",Finland
+682,"Finland_OECD Transfer Pricing Guidelines as a source of interpretation.pdf",Finland
+683,"Finland_Tax Procedure Act.pdf",Finland
+684,"Finland_Transfer pricing documentation (VH_44_00.01.00_2022).pdf",Finland
+685,"Finland_Transfer pricing in goods trade.pdf",Finland
+686,"Finland_Transfer pricing of intangible assets.pdf",Finland
+687,"Finland_Transfer pricing of service transactions.pdf",Finland
+688,"Guide on the country-by-country tax report.pdf.pdf",Finland
+689,"Loan agreements between group companies.pdf",Finland
+690,"Mutual Agreement Procedure (MAP) in transfer pricing matters.pdf",Finland
+691,"Notification of a person liable for reporting – this is how you report in MyTax.pdf.pdf",Finland
+692,"Tax supervision of transfer pricing.pdf",Finland
+693,"Taxation country-specific report – how to create a report in MyTax.pdf",Finland
+694,"Transfer pricing adjustment provision.pdf",Finland
+695,"Transfer pricing advice and procedure.pdf",Finland
+696,"Transfer pricing documentation obligation.pdf",Finland
+697,"Transfer pricing in business change situations.pdf",Finland
+698,"Transfer pricing of cash pool arrangements.pdf",Finland
+699,"Transfer pricing of guarantee transactions.pdf",Finland
+700,"Transfer pricing of intra-group financing.pdf",Finland
+701,"Transfer pricing of manufacturing activities.pdf",Finland
+702,"You can appeal a transfer pricing adjustment.pdf",Finland
+703,"Case no KHO_2017_145.pdf",Finland
+704,"Case No KHO_2017_146.pdf",Finland
+705,"Case No. 17_0979_4.pdf",Finland
+706,"Case No. KHO_2010_73.pdf",Finland
+707,"Case No. KHO_2013_36.pdf",Finland
+708,"Case No. KHO_2014_33.pdf",Finland
+709,"Case No. KHO_2014_119.pdf",Finland
+710,"Case No. KHO_2018_173.pdf",Finland
+711,"Case No. KHO_2021_66.pdf",Finland
+712,"Case No. KHO_2021_127.pdf",Finland
+713,"Case No. KHO_2023_32.pdf",Finland
+714,"Case No. KHO-2020-35.pdf",Finland
+715,"Case No. KHO-2021-178.pdf",Finland
+716,"Case No. KHO-2021-179.pdf",Finland
+717,"Case No. KHO2020-34.pdf",Finland
+718,"Case No. KHO2021_73.pdf",Finland
+719,"Pravilnik o izvajanju Zakona o davčnem postopku.pdf",Slovenia
+720,"Pravilnik o transfernih cenah.pdf",Slovenia
+721,"Zakon o davčnem postopku (ZDavP-2).pdf",Slovenia
+722,"Zakon o davku od dohodkov pravnih oseb (ZDDPO-2).pdf",Slovenia
+723,sodba_I_U_727_2012-08.10.2013.pdf,Slovenia
+724,Sodba_X_Ips_1138_2006-17.03.2010.pdf,Slovenia
+725,UPRS_sodba_I_U_328_2016-04.10.2016.pdf,Slovenia
+726,UPRS_Sodba_I_U_632_2016-7-17.01.2017.pdf,Slovenia
+727,UPRS_Sodba_I_U_1042_2019-21-20.08.2019.pdf,Slovenia
+728,UPRS_sodba_I_U_1184_2012-16.04.2013.pdf,Slovenia
+729,UPRS_Sodba_I_U_1570_2016-12-19.09.2017.pdf,Slovenia
+730,UPRS_sodba_I_U_1984_2013-16.09.2014.pdf,Slovenia
+731,UPRS_Sodba_III_U_208_2018-12-24.09.2020.pdf,Slovenia
+732,VSRS_Sodba_X_Ips_452_2014-25.08.2016.pdf,Slovenia
+733,"Netherlands_ Corporate Income Tax Act 1969.pdf",Netherlands
+734,"Netherlands_ MAP decree_No. 2021-0000226675.pdf",Netherlands
+735,"Netherlands_APA Guidelines_Decree 2019_13003.pdf",Netherlands
+736,"Netherlands_Decree of 14 June 2022 (no. 2022-0000139020).pdf",Netherlands
+737,"Netherlands_Mutual Agreement Procedures Decree.pdf",Netherlands
+738,"Netherlands_Standard Form_MAP requests in TP cases.pdf",Netherlands
+739,"Nederlands_District Court of Hague, Case No AWB 08_9105 VPB, (ECLI_NL_RBSGR_2011_BR4966).pdf",Netherlands
+740,"Netherland_District Court case no 2017_ 5965 (ECLI_NL_RBZWB_2017_5965).pdf",Netherlands
+741,"Netherland_District Court of Arnhem_Case No ECLI_NL_RBARN_2007_BA0339.pdf",Netherlands
+742,"Netherlands _Court of Appeals_Case No 22_00587_Jun 2023.pdf",Netherlands
+743,"Netherlands_Appellate Court of Amsterdam V-N 2004_39.9..pdf",Netherlands
+744,"Netherlands_Case No 22_358 to 22_361.pdf",Netherlands
+745,"Netherlands_Case No 22_01909 and 22_03307 – ECLI_NL_PHR_2023_226.pdf",Netherlands
+746,"Netherlands_Case No 39542, ECLI_NL_HR_2004_AO9474.pdf",Netherlands
+747,"Netherlands_Case No AWB-16_5664 (ECLI_NL_RBNHO_2022_9062).pdf",Netherlands
+748,"Netherlands_Case No C‑585_22_October 2024.pdf",Netherlands
+749,"Netherlands_Case No ECLI_NL_RBNHO_2022_8936.pdf",Netherlands
+750,"Netherlands_Case No. 15_00707 (Sept 2016).pdf",Netherlands
+751,"Netherlands_Case No. ECLI_NL_RBGEL_2021_3382.pdf",Netherlands
+752,"Netherlands_Council for Tax Affairs of Aruba_ Case No 2010_45712.pdf",Netherlands
+753,"Netherlands_Court of Appeal Case No ECLI_NL_ GHARL_2023_3929.pdf",Netherlands
+754,"Netherlands_Court of Appeal Case No ECLI_NL_GHSHE_2020_968.pdf",Netherlands
+755,"Netherlands_Court of Appeal Case No. ECLI_NL_GHSHE_2022_1198.pdf",Netherlands
+756,"Netherlands_Court of Appeal, Case No 22_2419.pdf",Netherlands
+757,"Netherlands_Court of Hague_Case No AWB-21_4016_July 2023.pdf",Netherlands
+758,"Netherlands_District Court Case No 01_04083 ECLI_NL_GHAMS_2003_AJ6865.pdf",Netherlands
+759,"Netherlands_District Court Case No. ECLI_NL_RBZWB_2019_4920.pdf",Netherlands
+760,"Netherlands_District Court_Case No AWB 06_288 (ECLI_NL_RBARN_2007_BA0339).pdf",Netherlands
+761,"Netherlands_District Court_Case nr. 05_1352, (ECLI_NL_RBBRE_2007_BA5078).pdf",Netherlands
+762,"Netherlands_European Court of Justice – AG Opinion_Case No C‑585_22 (March 2024).pdf",Netherlands
+763,"Netherlands_North Holland District Court_Case No AWB – 20_4350_Dec 2023.pdf",Netherlands
+764,"Netherlands_North Holland District Court_Case No AWB – 21 _ 4607_Feb 2024.pdf",Netherlands
+765,"Netherlands_Rechtbank ZWB No BRE 15_5683 (ECLI_NL_RBZWB_2017_5965).pdf",Netherlands
+766,"Netherlands_Supreme Court Case No 2016_1031 (14_05100).pdf",Netherlands
+767,"Netherlands_Supreme Court Case No 32997 ECLI_NL_HR_1998_AA2288.pdf",Netherlands
+768,"Netherlands_Supreme Court Case No 36446, ECLI_NL_HR_2002_AE4718.pdf",Netherlands
+769,"Netherlands_Supreme Court_Case No 11_00762 ECLI_NL_HR_2011_BT8777.pdf",Netherlands
+770,"Netherlands_Supreme Court_Case No 21_01534 (March 2024).pdf",Netherlands
+771,"Netherlands_Supreme Court_Case No 22_00587_Nov 2023.pdf",Netherlands
+772,"Administrative Guidance Globe Rules Pillar Two Central Record Legislation Transitional Qualified Status.pdf",pillar2
+773,"Administrative Guidance on Article 8.1.4 and 8.1.5 of the Global Anti-Base Erosion Model Rules (January 2025).pdf",pillar2
+774,"Administrative Guidance on Article 9.1 of the Global Anti-Base Erosion Model Rules (January 2025).pdf",pillar2
+775,"Administrative Guidance on the Global AntiBase Erosion Model Rules (Pillar Two) June 2024.pdf",pillar2
+776,"GloBE Information Return XML Schema_User Guide for Tax Administrations.pdf",pillar2
+777,"Multilateral Competent Authority Agreement on the Exchange of GloBE Information (January 2025).pdf",pillar2
+778,"OECD GloBE Information Return (January 2025).pdf",pillar2
+779,"OECD Pillar Two Examples.pdf",pillar2
+780,"OECD Pillar Two_FAQ.pdf",pillar2
+781,"Pillar Two Fact Sheet.pdf",pillar2
+782,"Qualified Status under the Global Minimum Tax – Questions and Answers.pdf",pillar2
+783,"Safe Harbours and Penalty Relief- Global Anti-Base Erosion Rules (Pillar Two).pdf",pillar2
+784,"Consolidated Commentary to the Global Anti-Base Erosion Model Rules (2023).pdf",pillar2
+785,"IAS 12 Amendement Pillar Two Disclosure.pdf",pillar2
+786,"OECD Pillar 2 Model Rules.pdf",pillar2
+787,"Draft QDMTT Return.pdf",pillar2_Belgium
+788,"Explanatory Memorandum [DOC 55 3678_001].pdf",pillar2_Belgium
+789,"Law on Miscellaneous Tax Provisions [C − 2024_004641].pdf",pillar2_Belgium
+790,"Law on the introduction of a minimum tax for multinational enterprise groups and large domestic groups.pdf",pillar2_Belgium
+791,"Royal Decree_July 7 2024.pdf",pillar2_Belgium
+792,"EU Council Directives (2022_2523).pdf",pillar2_Belgium
+793,"Amendment to Minimum Tax Act_Law No. 684 of 11.06.2024.pdf",pillar2_Denmark
+794,"Draft Legislation (Bill 2024-4606).pdf",pillar2_Denmark
+795,"Minimum Tax Act.pdf",pillar2_Denmark
+796,"OECD (2025), Central Record, OECD_G20 Inclusive Framework on BEPS, OECD, Paris,.pdf",pillar2_Denmark
+797,"EU Council Directives (2022_2523).pdf",pillar2_Denmark
+798,"Suomen säädöskokoelma_917_2024 (December 2024).pdf",pillar2_Finland
+799,"Suurten konsernien vähimmäisverotus - huomioitavat verot (12 March 2025).pdf",pillar2_Finland
+800,"Suurten konsernien vähimmäisverotus (10 March 2025).pdf",pillar2_Finland
+801,"EU Council Directives (2022_2523).pdf",pillar2_Finland
+802,"Laki suurten konsernien vähimmäisverosta 1308_2023.pdf",pillar2_Finland
+803,"EU Council Directives (2022_2523).pdf",pillar2_Slovenia
+804,"ZAKON O MINIMALNEM DAVKU (ZMD).pdf",pillar2_Slovenia
+805," Federal Direct Tax Law.pdf",pillar2_Switzerland
+806,"Announcement_IIR to come into force in 2025.pdf",pillar2_Switzerland
+807,"Communication-023-E-2025_Notice on Tax Treatment of Business Units Qualifying as PEs Under Domestic Minimum Tax Rules.pdf",pillar2_Switzerland
+808,"Explantory Report.pdf",pillar2_Switzerland
+809,"Ordinance on the Minimum Taxation of Large Corporate Groups.pdf",pillar2_Switzerland
+810,"Amended Minimum Tax Ordinance.pdf",pillar2_Switzerland
+811,"Explanatory Notes to Finance (No 2) Act 2023.pdf",pillar2_UK
+812,"The Multinational Top-up Tax (Pillar 2 territories, qualifying domestic top-up taxes and accredited qualifying domestic top-up taxes) Regulations — 2025 (Apr 2025).pdf",pillar2_UK
+813,"Amendment 1 to Schedule 4_Pillar 2.pdf",pillar2_UK
+814,"Draft Legislation Pillar 2 Transitional CBCR Safe Harbour Anti-Arbitrage Rule.pdf",pillar2_UK
+815,"Multinational Top-up Tax and Domestic Top-up Tax_Further Draft Guidance_September 2024.pdf",pillar2_UK
+816,"Part 10 of Schedule 14 of F(No. 2)A 2023.pdf",pillar2_UK
+817,"Pay Pillar 2 top-up taxes (Domestic Top-up Tax and Multinational Top-up Tax) - GOV.UK.pdf",pillar2_UK
+818,"Replace the filing member for a Pillar 2 top-up taxes account - GOV.UK.pdf",pillar2_UK
+819,"Report Pillar 2 top-up taxes.pdf",pillar2_UK
+820,"UK_Finance (No. 2) Act 2023_Part 3 and Part 4.pdf",pillar2_UK
+821,"UK_Multinational Top-up Tax Draft Guidance.pdf",pillar2_UK
+822,"General Tax Act.pdf",pillar2_Germany
+823,"Germany_Minimum Tax Act.pdf",pillar2_Germany
+824,"Group Parent Notification Form.pdf",pillar2_Germany
+825,"Guidance on the Treatment of Tax Transparent Partnerships for the CbCR Safe Harbour.pdf",pillar2_Germany
+826,"EU Council Directives (2022_2523)_2.pdf",pillar2_Germany
+827,"C.D.11 Transfer Pricing.pdf",Denmark
+828,"CJ5 Valuation within transfer pricing (new section) [CJ5 Valuation within transfer pricing.pdf",Denmark
+829,"Council Directive 2016_881_EU (DAC4).pdf",Denmark
+830,"Country-by-Country Reporting _ Skat Summary Guide.pdf",Denmark
+831,"Transfer pricing _ Skat_Guidance.pdf",Denmark
+832," Denmark_Sections 47-52 of Tax Control Act 1535.pdf",Denmark
+833,"CbC reporting guide of the Danish Tax Agency.pdf",Denmark
+834,"Denmark_CbCR Notification Guide [ENG Translated].pdf",Denmark
+835,"Executive Order 1304 of 14 November 2018.pdf",Denmark
+836,"Executive Order on Country-by-Country Reporting.pdf",Denmark
+837,"Executive Order on Documentation of the Pricing of Controlled Transactions.pdf",Denmark
+838,"Executive Order on reporting of cross-border arrangements.pdf",Denmark
+839,"Section 3B(10-16) of the Danish Tax Control Act Skattekontrollovens.pdf",Denmark
+840,"Section 37-38 of Tax Control Act 1535 of 19 December 2017 compiled with later changes of 8 January 2024.pdf",Denmark
+841,"Denmar_Tax Assessment Act.pdf",Denmark
+842,"Denmark_Accenture_Case No BS-49398_2023-HJR and BS-47473_2023-HJR.pdf",Denmark
+843,"Denmark_Adecco A_S, [June 2020, Supreme Court, Case No SKM2020.303.HR].pdf",Denmark
+844,"Denmark_Advisory business ApS [June 2021, Court of Appeal, Case No SKM2021.335.OLR].pdf",Denmark
+845,"Denmark_C-Advisory Business ApS November 2022, Supreme Court, Case No BS-22176_2021-HJR (SKM2023.8.HR).pdf",Denmark
+846,"Denmark_Codan Forsikring A_S, August 2022, [Court of Appeal, Case no BS-11370_2020].pdf",Denmark
+847,"Denmark_Consulting A_S, Court of Appeal [Case No B-0956-16 and BS-52532_2019-OLR (SKM2023.628.ØLR)].pdf",Denmark
+848,"Denmark_Contract manufacturing [April 2018, Tax Tribunal, Case No SKM2018.173.LSR].pdf",Denmark
+849,"Denmark_Copenhagen Airports Denmark Holdings ApS, February 2023, [Court of Appeal, Case No SKM2023.404.OLR].pdf",Denmark
+850,"Denmark_Danish Branch, January 2020, Tax Tribunal [Case No SKM2020.30.LSR]pdf.pdf",Denmark
+851,"Denmark_Danish Company and PE [December 2016, Tax Tribunal, SKM2017.115].pdf",Denmark
+852,"Denmark_Danish Production Co. [October 2015, Supreme Court, case nr. SKM2015.659.HR].pdf",Denmark
+853,"Denmark_EAC Invest A_S, October 2021, [Court of Appeal, Case No SKM2021.705.OLR].pdf",Denmark
+854,"Denmark_ECCO A_S , October 2020, [Court of Appeal, Case No SKM2020.397.VLR].pdf",Denmark
+855,"Denmark_EET Group A_S Court of Appeal [Case No SKM2024.506.ØLR (BS-6035_2021-OLR)].pdf",Denmark
+856,"Denmark_Fashion Seller A_S [November 2021, Court of Appeal, Case No SKM2021.582.OLR].pdf",Denmark
+857,"Denmark_H Borrower and Lender A_S [January 2021, Tax Tribunal, Case no SKM2021.33.LSR].pdf",Denmark
+858,"Denmark_H Group, [April 2019, Tax Tribunal, Case No. SKM2019.207.LSR].pdf",Denmark
+859,"Denmark_H1 [June 2013, Supreme Court, Case No SKM2013.699].pdf",Denmark
+860,"Denmark_H1 A_S [ August 2016, Court of Appeal, Case No SKM2016.354.VLR].pdf",Denmark
+861,"Denmark_H1 A_S [Court of Appeal, Case No SKM2020.224.VLR].pdf",Denmark
+862,"Denmark_H1 A_S, [Oct 2019, Court of Appeal, Case No SKM2019.537.OLR].pdf",Denmark
+863,"Denmark_H1 Denmark [March 2018, Court of Appeal, SKM2018.416.ØLR].pdf",Denmark
+864,"Denmark_Heavy Transport Holding Denmark ApS, March 2021, [Court of Appeal, Cases B-721-13].pdf",Denmark
+865,"Denmark_Hjorring [November 2018, Danish Supreme Court, Case No SKM2018.627.HR and SKM2018.635.HR].pdf",Denmark
+866,"Denmark_IP ApS March 2023, Tax Tribunal [Case No. SKM2023.135.LSR].pdf",Denmark
+867,"Denmark_Maersk Oil and Gas A_S (TotalEnergies EP Danmark A_S), Supreme Court [Case No BS-15265_2022-HJR and BS-16812_2022-HJR].pdf",Denmark
+868,"Denmark_Maersk Oil and Gas A_S, March 2022, Court of Appeal [Case No BS-41574_2018 and BS-41577_2018].pdf",Denmark
+869,"Denmark_MAN Energy Solutions [September 2019, Supreme Court, Case No SKM2019.486.HR].pdf",Denmark
+870,"Denmark_Microsoft Denmark [January 2019, Danish Supreme Court, Case No SKM2019.136.HR].pdf",Denmark
+871,"Denmark_NETAPP ApS and TDC A_S [May 2021, Court of Appeal, Cases B-1980-12 and B-2173-12].pdf",Denmark
+872,"Denmark_NetApp Denmark ApS and TDC A_S, January 2023, Supreme Court, Cases 69_2021, 79_2021 and 70_2021.pdf",Denmark
+873,"Denmark_October 2013, Tax Tribunal, [SKM2014.53.LSR].pdf",Denmark
+874,"Denmark_Pharma Distributor, [Court of Appeal, Case No SKM2020.105.OLR].pdf",Denmark
+875,"Denmark_Pharma Distributor, [SKM2017.187.LSR] 2017.pdf",Denmark
+876,"Denmark_Production A_S [Feb 2018, Tax Tribunal, SKM2018.62.LSR].pdf",Denmark
+877,"Denmark_Software A_S [September 2020, Tax Court, Case no SKM2020.387.LSR].pdf",Denmark
+878,"Denmark_Soy A_S, Court of Appeal [SKM2023.316.ØLR].pdf",Denmark
+879,"Denmark_Swiss Re. [February 2012, Supreme Court, SKM2012.92].pdf",Denmark
+880,"Denmark_Takeda A_S (former Nycomed A_S) and NTC Parent S.à.r.l., [Supreme Court, Cases 116_2021 and 117_2021].pdf",Denmark
+881,"Denmark_Takeda A_S and NTC Parent S.a.r.l., November 2021 [Court of Appeal, Cases B-2942-12 and B-171-13].pdf",Denmark
+882,"Denmark_Tetra Pak Processing Systems A_S [April 2021, Supreme Court, Case No BS-19502_2020-HJR].pdf",Denmark
+883,"OECD_Attribution of Profits to Permanent Establishments.pdf",OECD
+886,"OECD_Common errors made by MNEs in preparing Country-by-Country reports.pdf",OECD
+887,"OECD_Guidance on the appropriate use of information contained in Country-by-Country reports.pdf",OECD
+888,"OECD_Guidance on the Implementation of Country-by-Country Reporting- BEPS Action 13 (May 2024).pdf",OECD
+889,"OECD_CbCR_Handbook on Effective Implementation.pdf",OECD
+890,"OECD_CbCR_Handbook on Effective Tax Risk Assessment.pdf",OECD

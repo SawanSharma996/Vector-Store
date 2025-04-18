@@ -18,30 +18,45 @@ def _extract_text_from_pdf(pdf_path):
     """
     Synchronously extracts text from a PDF using PyMuPDF.
     """
-    text = ""
+    pages = []
     doc = fitz.open(pdf_path)
-    for page in doc:
-        text += page.get_text() + "\n"
+    for i, page in enumerate(doc, start=1):
+        pages.append(
+            {
+                "page_number": i,
+                "text": page.get_text()
+            }
+        )
     doc.close()
-    return text   
+    return pages   
 
-def split_text_into_chunks(text, chunk_size=500, overlap=50):
+def split_text_into_chunks(pages, chunk_size=500, overlap=50):
     """
-    Splits text into chunks with a specified chunk size and overlap for better context preservation.
+    Splits text of each page into chunks with a specified chunk size and overlap.
     Uses tiktoken to tokenize the text.
+    Returns a list of text strings with the page number embedded in each chunk.
     """
     tokenizer = tiktoken.get_encoding("cl100k_base")
-    tokens = tokenizer.encode(text)
     chunks = []
     
-    # Adjust chunk size for very large documents
-    if len(tokens) > 50000:
-        chunk_size = 300
-    
-    for i in range(0, len(tokens), chunk_size - overlap):
-        chunk_tokens = tokens[i:i + chunk_size]
-        chunk_text = tokenizer.decode(chunk_tokens)
-        chunks.append(chunk_text)
+    for page in pages:
+        page_number = page["page_number"]
+        text = page["text"]
+        tokens = tokenizer.encode(text)
+        
+        # Adjust chunk size for very large documents
+        if len(tokens) > 50000:
+            page_chunk_size = 300
+        else:
+            page_chunk_size = chunk_size
+        
+        # Create overlapping chunks per page and embed page number in the text itself
+        for i in range(0, len(tokens), page_chunk_size - overlap):
+            chunk_tokens = tokens[i:i + page_chunk_size]
+            chunk_text = tokenizer.decode(chunk_tokens)
+            # Embed page information directly into the text chunk
+            combined_text = f"Page {page_number}:\n{chunk_text}"
+            chunks.append(combined_text)
     return chunks
 
 async def generate_embeddings(chunks, openai_client):
@@ -52,6 +67,7 @@ async def generate_embeddings(chunks, openai_client):
     batch_size = 20  # Adjust batch size based on your needs
     all_embeddings = []
     
+    # Since chunks are now plain text strings with the page number included, use them directly
     for i in range(0, len(chunks), batch_size):
         batch = chunks[i:i + batch_size]
         # Offload the API call to a thread to avoid blocking
@@ -68,9 +84,11 @@ async def generate_embeddings(chunks, openai_client):
             
     return all_embeddings
 
+
 def store_in_qdrant(chunks, embeddings, pdf_id, user_id, filename, description, qdrant_client, collection_name="pdf_chunks"):
     """
     Stores text chunks and their corresponding embeddings in Qdrant with additional metadata.
+    The page number is included directly in the text field.
     """
     points = [
         qmodels.PointStruct(
@@ -82,7 +100,7 @@ def store_in_qdrant(chunks, embeddings, pdf_id, user_id, filename, description, 
                 "filename": filename,
                 "description": description if description else "",
                 "chunk_index": i,
-                "text": chunk
+                "text": chunk  # This text already includes the page number information
             }
         )
         for i, (chunk, embedding) in enumerate(zip(chunks, embeddings))
