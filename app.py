@@ -43,7 +43,7 @@ def init_qdrant(qdrant_client):
     if "pdf_chunks" not in [col.name for col in collections.collections]:
         qdrant_client.create_collection(
             collection_name="pdf_chunks",
-            vectors_config=qmodels.VectorParams(size=1536, distance=qmodels.Distance.COSINE)
+            vectors_config=qmodels.VectorParams(size=3072, distance=qmodels.Distance.COSINE)
         )
 
 @app.on_event("startup")
@@ -298,7 +298,7 @@ async def process_pdf_in_background(
         if collection_name not in [col.name for col in collections.collections]:
             qdrant_client.create_collection(
                 collection_name=collection_name,
-                vectors_config=qmodels.VectorParams(size=1536, distance=qmodels.Distance.COSINE)
+                vectors_config=qmodels.VectorParams(size=3072, distance=qmodels.Distance.COSINE)
             )
         
         # Store in smaller batches
@@ -385,7 +385,7 @@ async def create_collection(
     try:
         qdrant_client.create_collection(
             collection_name=collection_name,
-            vectors_config=qmodels.VectorParams(size=1536, distance=qmodels.Distance.COSINE)
+            vectors_config=qmodels.VectorParams(size=3072, distance=qmodels.Distance.COSINE)
         )
         return {"message": f"Collection '{collection.name}' created successfully"}
     except Exception as e:

@@ -30,7 +30,7 @@ def _extract_text_from_pdf(pdf_path):
     doc.close()
     return pages   
 
-def split_text_into_chunks(pages, chunk_size=500, overlap=50):
+def split_text_into_chunks(pages, chunk_size=900, overlap=50):
     """
     Splits text of each page into chunks with a specified chunk size and overlap.
     Uses tiktoken to tokenize the text.
@@ -45,10 +45,7 @@ def split_text_into_chunks(pages, chunk_size=500, overlap=50):
         tokens = tokenizer.encode(text)
         
         # Adjust chunk size for very large documents
-        if len(tokens) > 50000:
-            page_chunk_size = 300
-        else:
-            page_chunk_size = chunk_size
+        page_chunk_size = chunk_size
         
         # Create overlapping chunks per page and embed page number in the text itself
         for i in range(0, len(tokens), page_chunk_size - overlap):
@@ -73,7 +70,7 @@ async def generate_embeddings(chunks, openai_client):
         # Offload the API call to a thread to avoid blocking
         response = await asyncio.to_thread(
             openai_client.embeddings.create,
-            model="text-embedding-ada-002",
+            model="text-embedding-3-large",
             input=batch
         )
         batch_embeddings = [emb.embedding for emb in response.data]
