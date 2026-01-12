@@ -5,7 +5,22 @@ from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
 import uuid
 import asyncio
+import pandas as pd
+import os
 
+
+async def extract_text_from_file(file_path):
+    """
+    Asynchronously extracts text from a file (PDF or Excel).
+    """
+    file_extension = os.path.splitext(file_path)[1].lower()
+    
+    if file_extension == '.pdf':
+        return await extract_text_from_pdf(file_path)
+    elif file_extension in ['.xlsx', '.xls']:
+        return await extract_text_from_excel(file_path)
+    else:
+        raise ValueError(f"Unsupported file type: {file_extension}")
 
 async def extract_text_from_pdf(pdf_path):
     """
@@ -30,11 +45,68 @@ def _extract_text_from_pdf(pdf_path):
     doc.close()
     return pages   
 
+async def extract_text_from_excel(excel_path):
+    """
+    Asynchronously extracts text from an Excel file using pandas.
+    """
+    return await asyncio.to_thread(_extract_text_from_excel, excel_path)
+
+def _extract_text_from_excel(excel_path):
+    """
+    Synchronously extracts text from an Excel file using pandas.
+    """
+    pages = []
+    
+    try:
+        # Read all sheets from the Excel file
+        excel_file = pd.ExcelFile(excel_path)
+        
+        for sheet_idx, sheet_name in enumerate(excel_file.sheet_names, start=1):
+            df = pd.read_excel(excel_path, sheet_name=sheet_name)
+            
+            # Convert the DataFrame to a text representation
+            text_content = []
+            
+            # Add sheet name as header
+            text_content.append(f"Sheet: {sheet_name}")
+            text_content.append("=" * 50)
+            
+            # Add column headers
+            if not df.empty:
+                headers = " | ".join(str(col) for col in df.columns)
+                text_content.append(headers)
+                text_content.append("-" * len(headers))
+                
+                # Add rows
+                for idx, row in df.iterrows():
+                    row_text = " | ".join(str(val) if pd.notna(val) else "" for val in row)
+                    text_content.append(row_text)
+            else:
+                text_content.append("(Empty sheet)")
+            
+            # Join all content for this sheet
+            sheet_text = "\n".join(text_content)
+            
+            pages.append({
+                "page_number": sheet_idx,
+                "text": sheet_text,
+                "sheet_name": sheet_name
+            })
+            
+    except Exception as e:
+        # If there's an error reading the Excel file, create a single page with error info
+        pages.append({
+            "page_number": 1,
+            "text": f"Error reading Excel file: {str(e)}"
+        })
+    
+    return pages
+
 def split_text_into_chunks(pages, chunk_size=900, overlap=50):
     """
     Splits text of each page into chunks with a specified chunk size and overlap.
     Uses tiktoken to tokenize the text.
-    Returns a list of text strings with the page number embedded in each chunk.
+    Returns a list of text strings with the page/sheet number embedded in each chunk.
     """
     tokenizer = tiktoken.get_encoding("cl100k_base")
     chunks = []
@@ -42,6 +114,13 @@ def split_text_into_chunks(pages, chunk_size=900, overlap=50):
     for page in pages:
         page_number = page["page_number"]
         text = page["text"]
+        
+        # For Excel files, use sheet name if available
+        if "sheet_name" in page:
+            page_label = f"Sheet {page_number} ({page['sheet_name']})"
+        else:
+            page_label = f"Page {page_number}"
+        
         tokens = tokenizer.encode(text)
         
         # Adjust chunk size for very large documents
@@ -52,7 +131,7 @@ def split_text_into_chunks(pages, chunk_size=900, overlap=50):
             chunk_tokens = tokens[i:i + page_chunk_size]
             chunk_text = tokenizer.decode(chunk_tokens)
             # Embed page information directly into the text chunk
-            combined_text = f"Page {page_number}:\n{chunk_text}"
+            combined_text = f"{page_label}:\n{chunk_text}"
             chunks.append(combined_text)
     return chunks
 

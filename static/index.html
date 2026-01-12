@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PDF Manager</title>
+  <title>Document Manager</title>
   <link
     href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
     rel="stylesheet"
@@ -436,14 +436,103 @@
       gap: 10px;
       margin-top: 10px;
     }
+
+    /* Searchable Dropdown Styles */
+    .searchable-dropdown {
+      position: relative;
+      width: 100%;
+    }
+
+    .dropdown-input {
+      width: 100%;
+      padding: 12px 40px 12px 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+      background-color: var(--gray);
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .dropdown-input:focus {
+      outline: none;
+      border-color: var(--green);
+      box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.2);
+    }
+
+    .dropdown-arrow {
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      pointer-events: none;
+      color: var(--green);
+      transition: var(--transition);
+    }
+
+    .dropdown-arrow.open {
+      transform: translateY(-50%) rotate(180deg);
+    }
+
+    .dropdown-options {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      background: white;
+      border: 1px solid #ddd;
+      border-top: none;
+      border-radius: 0 0 6px 6px;
+      max-height: 200px;
+      overflow-y: auto;
+      z-index: 1000;
+      display: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dropdown-options.show {
+      display: block;
+    }
+
+    .dropdown-option {
+      padding: 12px 15px;
+      cursor: pointer;
+      transition: var(--transition);
+      border-bottom: 1px solid #f0f0f0;
+    }
+
+    .dropdown-option:hover {
+      background-color: rgba(76, 175, 80, 0.1);
+    }
+
+    .dropdown-option:last-child {
+      border-bottom: none;
+    }
+
+    .dropdown-option.selected {
+      background-color: var(--green);
+      color: white;
+    }
+
+    .dropdown-option.hidden {
+      display: none;
+    }
+
+    .no-results {
+      padding: 12px 15px;
+      color: #666;
+      font-style: italic;
+      text-align: center;
+    }
   </style>
 </head>
 <body>
   <header>
     <div class="container">
       <div class="logo">
-        <i class="fas fa-file-pdf"></i>
-        <span>PDF Manager</span>
+        <i class="fas fa-file-alt"></i>
+        <span>Document Manager</span>
       </div>
       <div id="user-info" style="display: none;">
         <span id="username"></span>
@@ -525,19 +614,19 @@
       </div>
     </div>
 
-    <!-- PDF Management Section -->
+    <!-- Document Management Section -->
     <div id="pdf-management" style="display: none;" class="animate-fade-in">
       <div class="card">
-        <h2><i class="fas fa-cloud-upload-alt"></i> Upload PDF</h2>
+        <h2><i class="fas fa-cloud-upload-alt"></i> Upload Documents</h2>
         <form id="upload-form">
           <div class="file-upload">
-            <i class="fas fa-file-pdf pulse"></i>
+            <i class="fas fa-file-alt pulse"></i>
             <div class="file-info">
-              <h3>Drag & Drop your PDFs here</h3>
+              <h3>Drag & Drop your documents here</h3>
               <p>or click to browse files</p>
-              <p><small>You can upload up to 50 PDFs at once</small></p>
+              <p><small>Supported formats: PDF, Excel (.xlsx, .xls)</small></p>
             </div>
-            <input type="file" name="files" multiple required />
+            <input type="file" name="files" multiple accept=".pdf,.xlsx,.xls" required />
           </div>
           <div class="form-group">
             <label for="description">Description</label>
@@ -550,21 +639,43 @@
           </div>
           <div class="form-group">
             <label for="collection">Collection (optional)</label>
-            <select id="collection" name="collection">
-              <option value="">Default Collection</option>
-              <!-- Collections will be populated dynamically -->
-            </select>
+            <div class="searchable-dropdown" id="collection-dropdown">
+              <input 
+                type="text" 
+                id="collection-input" 
+                class="dropdown-input" 
+                placeholder="Search or select a collection..." 
+                autocomplete="off"
+                readonly
+              />
+              <i class="fas fa-chevron-down dropdown-arrow"></i>
+              <div class="dropdown-options" id="collection-options">
+                <div class="dropdown-option" data-value="">Default Collection</div>
+              </div>
+            </div>
+            <input type="hidden" id="collection" name="collection" value="" />
           </div>
           <div class="form-group">
             <label for="collection-filter">Filter by Collection</label>
-            <select id="collection-filter" onchange="filterByCollection()">
-              <option value="">All Collections</option>
-              <option value="default">Default Collection</option>
-              <!-- Other collections will be populated dynamically -->
-            </select>
+            <div class="searchable-dropdown" id="collection-filter-dropdown">
+              <input 
+                type="text" 
+                id="collection-filter-input" 
+                class="dropdown-input" 
+                placeholder="Search or select a collection to filter..." 
+                autocomplete="off"
+                readonly
+              />
+              <i class="fas fa-chevron-down dropdown-arrow"></i>
+              <div class="dropdown-options" id="collection-filter-options">
+                <div class="dropdown-option" data-value="">All Collections</div>
+                <div class="dropdown-option" data-value="default">Default Collection</div>
+              </div>
+            </div>
+            <input type="hidden" id="collection-filter" value="" />
           </div>
           <button type="submit" class="btn">
-            <i class="fas fa-upload"></i> Upload PDFs
+            <i class="fas fa-upload"></i> Upload Documents
           </button>
         </form>
       </div>
@@ -583,12 +694,12 @@
       </div>
 
       <div class="card">
-        <h2><i class="fas fa-file-alt"></i> Your PDFs</h2>
+        <h2><i class="fas fa-file-alt"></i> Your Documents</h2>
         <div class="form-group">
           <input
             type="text"
             id="pdf-search"
-            placeholder="Search PDFs by name or description..."
+            placeholder="Search documents by name or description..."
             style="margin-bottom: 15px;"
           />
         </div>
@@ -604,7 +715,7 @@
                 <th class="sortable" onclick="sortPDFs('upload_date')">
                   Upload Date <i class="fas fa-sort"></i>
                 </th>
-                <th>Pages</th>
+                <th>Pages/Sheets</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -613,8 +724,8 @@
         </div>
         <div id="empty-state" class="empty-state" style="display: none;">
           <i class="fas fa-folder-open"></i>
-          <h3>No PDFs found</h3>
-          <p>Upload your first PDF to get started</p>
+          <h3>No documents found</h3>
+          <p>Upload your first document to get started</p>
         </div>
       </div>
     </div>
@@ -656,6 +767,274 @@
     const itemsPerPage = 20;
     let currentCollection = "";
     let collections = []; // To store fetched collections for later use
+
+    // Searchable Dropdown Class
+    class SearchableDropdown {
+      constructor(dropdownId, inputId, optionsId, hiddenInputId, onChangeCallback = null) {
+        this.dropdown = document.getElementById(dropdownId);
+        this.input = document.getElementById(inputId);
+        this.options = document.getElementById(optionsId);
+        this.hiddenInput = document.getElementById(hiddenInputId);
+        this.arrow = this.dropdown.querySelector('.dropdown-arrow');
+        this.onChangeCallback = onChangeCallback;
+        this.isOpen = false;
+        this.selectedValue = '';
+        this.selectedText = '';
+        
+        this.init();
+      }
+
+      init() {
+        // Toggle dropdown on input click
+        this.input.addEventListener('click', (e) => {
+          e.stopPropagation();
+          this.toggle();
+        });
+
+        // Handle search input
+        this.input.addEventListener('input', () => {
+          this.filterOptions();
+        });
+
+        // Handle option selection
+        this.options.addEventListener('click', (e) => {
+          if (e.target.classList.contains('dropdown-option')) {
+            this.selectOption(e.target);
+          }
+        });
+
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+          if (!this.dropdown.contains(e.target)) {
+            this.close();
+          }
+        });
+
+        // Handle keyboard navigation
+        this.input.addEventListener('keydown', (e) => {
+          this.handleKeyboard(e);
+        });
+      }
+
+      toggle() {
+        if (this.isOpen) {
+          this.close();
+        } else {
+          this.open();
+        }
+      }
+
+      open() {
+        this.isOpen = true;
+        this.options.classList.add('show');
+        this.arrow.classList.add('open');
+        this.input.removeAttribute('readonly');
+        this.input.focus();
+        
+        // Reset search when opening
+        if (this.input.value === this.selectedText) {
+          this.input.value = '';
+        }
+        this.filterOptions();
+      }
+
+      close() {
+        this.isOpen = false;
+        this.options.classList.remove('show');
+        this.arrow.classList.remove('open');
+        this.input.setAttribute('readonly', 'true');
+        
+        // Restore selected text if nothing was selected
+        if (this.selectedText) {
+          this.input.value = this.selectedText;
+        } else {
+          this.input.value = '';
+        }
+      }
+
+      selectOption(optionElement) {
+        const value = optionElement.getAttribute('data-value');
+        const text = optionElement.textContent;
+        
+        // Update selected values
+        this.selectedValue = value;
+        this.selectedText = text;
+        this.input.value = text;
+        this.hiddenInput.value = value;
+        
+        // Update visual selection
+        this.options.querySelectorAll('.dropdown-option').forEach(opt => {
+          opt.classList.remove('selected');
+        });
+        optionElement.classList.add('selected');
+        
+        this.close();
+        
+        // Call callback if provided
+        if (this.onChangeCallback) {
+          this.onChangeCallback(value, text);
+        }
+      }
+
+      filterOptions() {
+        const searchTerm = this.input.value.toLowerCase();
+        const optionElements = this.options.querySelectorAll('.dropdown-option');
+        let hasVisibleOptions = false;
+        
+        optionElements.forEach(option => {
+          const text = option.textContent.toLowerCase();
+          if (text.includes(searchTerm)) {
+            option.classList.remove('hidden');
+            hasVisibleOptions = true;
+          } else {
+            option.classList.add('hidden');
+          }
+        });
+        
+        // Show/hide no results message
+        let noResultsMsg = this.options.querySelector('.no-results');
+        if (!hasVisibleOptions && searchTerm) {
+          if (!noResultsMsg) {
+            noResultsMsg = document.createElement('div');
+            noResultsMsg.className = 'no-results';
+            noResultsMsg.textContent = 'No collections found';
+            this.options.appendChild(noResultsMsg);
+          }
+          noResultsMsg.style.display = 'block';
+        } else if (noResultsMsg) {
+          noResultsMsg.style.display = 'none';
+        }
+      }
+
+      handleKeyboard(e) {
+        if (!this.isOpen) return;
+        
+        const visibleOptions = Array.from(this.options.querySelectorAll('.dropdown-option:not(.hidden)'));
+        const currentSelected = this.options.querySelector('.dropdown-option.selected');
+        let currentIndex = visibleOptions.indexOf(currentSelected);
+        
+        switch (e.key) {
+          case 'ArrowDown':
+            e.preventDefault();
+            currentIndex = Math.min(currentIndex + 1, visibleOptions.length - 1);
+            if (visibleOptions[currentIndex]) {
+              this.selectOption(visibleOptions[currentIndex]);
+            }
+            break;
+          case 'ArrowUp':
+            e.preventDefault();
+            currentIndex = Math.max(currentIndex - 1, 0);
+            if (visibleOptions[currentIndex]) {
+              this.selectOption(visibleOptions[currentIndex]);
+            }
+            break;
+          case 'Enter':
+            e.preventDefault();
+            if (visibleOptions[currentIndex]) {
+              this.selectOption(visibleOptions[currentIndex]);
+            }
+            break;
+          case 'Escape':
+            e.preventDefault();
+            this.close();
+            break;
+        }
+      }
+
+      updateOptions(optionsData) {
+        // Clear existing options except the first one (default)
+        const defaultOption = this.options.querySelector('.dropdown-option[data-value=""]');
+        this.options.innerHTML = '';
+        
+        if (defaultOption) {
+          this.options.appendChild(defaultOption);
+        }
+        
+        // Add new options
+        optionsData.forEach(option => {
+          const optionElement = document.createElement('div');
+          optionElement.className = 'dropdown-option';
+          optionElement.setAttribute('data-value', option.value);
+          optionElement.textContent = option.text;
+          this.options.appendChild(optionElement);
+        });
+      }
+
+      setValue(value, text) {
+        this.selectedValue = value;
+        this.selectedText = text;
+        this.input.value = text;
+        this.hiddenInput.value = value;
+        
+        // Update visual selection
+        this.options.querySelectorAll('.dropdown-option').forEach(opt => {
+          opt.classList.remove('selected');
+          if (opt.getAttribute('data-value') === value) {
+            opt.classList.add('selected');
+          }
+        });
+      }
+    }
+
+    // Initialize searchable dropdowns
+    let collectionDropdown, collectionFilterDropdown;
+
+    // Initialize dropdowns after DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+      // Collection dropdown for upload
+      collectionDropdown = new SearchableDropdown(
+        'collection-dropdown',
+        'collection-input', 
+        'collection-options',
+        'collection'
+      );
+
+      // Collection filter dropdown
+      collectionFilterDropdown = new SearchableDropdown(
+        'collection-filter-dropdown',
+        'collection-filter-input',
+        'collection-filter-options', 
+        'collection-filter',
+        (value, text) => {
+          // Callback for filter change
+          currentCollection = value;
+          currentPage = 1;
+          fetchPDFs();
+        }
+      );
+
+      // Set default values
+      collectionDropdown.setValue('', 'Default Collection');
+      collectionFilterDropdown.setValue('', 'All Collections');
+    });
+
+    // Helper function to get file icon based on file type
+    function getFileIcon(filename, fileType) {
+      const extension = filename.split('.').pop().toLowerCase();
+      const type = fileType || extension;
+      
+      switch (type) {
+        case 'pdf':
+          return '<i class="fas fa-file-pdf" style="color: #d32f2f;"></i>';
+        case 'xlsx':
+        case 'xls':
+          return '<i class="fas fa-file-excel" style="color: #2e7d32;"></i>';
+        default:
+          return '<i class="fas fa-file" style="color: var(--green);"></i>';
+      }
+    }
+
+    // Helper function to get file type display name
+    function getFileTypeDisplay(fileType) {
+      switch (fileType) {
+        case 'pdf':
+          return 'PDF';
+        case 'xlsx':
+          return 'Excel';
+        default:
+          return 'Document';
+      }
+    }
 
     // Toast notification function
     function showToast(message, type = "success") {
@@ -701,20 +1080,23 @@
 
       if (this.files.length > 0) {
         const fileCount = this.files.length;
+        const fileTypes = Array.from(this.files).map(file => {
+          const ext = file.name.split('.').pop().toLowerCase();
+          return ext === 'pdf' ? 'PDF' : ext === 'xlsx' || ext === 'xls' ? 'Excel' : 'File';
+        });
+        const uniqueTypes = [...new Set(fileTypes)];
+        
         fileInfo.innerHTML = `
-                    <h3>${fileCount} ${
-          fileCount === 1 ? "file" : "files"
-        } selected</h3>
-                    <p>${Array.from(this.files)
-                      .map((file) => file.name)
-                      .join(", ")}</p>
+                    <h3>${fileCount} ${fileCount === 1 ? "file" : "files"} selected</h3>
+                    <p>Types: ${uniqueTypes.join(', ')}</p>
+                    <p><small>${Array.from(this.files).map(file => file.name).join(", ")}</small></p>
                 `;
         fileUpload.style.borderColor = "var(--yellow)";
       } else {
         fileInfo.innerHTML = `
-                    <h3>Drag & Drop your PDFs here</h3>
+                    <h3>Drag & Drop your documents here</h3>
                     <p>or click to browse files</p>
-                    <p><small>You can upload up to 10 PDFs at once</small></p>
+                    <p><small>Supported formats: PDF, Excel (.xlsx, .xls)</small></p>
                 `;
         fileUpload.style.borderColor = "var(--green)";
       }
@@ -792,7 +1174,7 @@
       updateUI();
     });
 
-    // Upload PDF
+    // Upload Documents
     document.getElementById("upload-form").addEventListener("submit", async (e) => {
       e.preventDefault();
       const files = e.target.files.files;
@@ -800,7 +1182,19 @@
       const collection = document.getElementById("collection").value;
 
       if (files.length === 0) {
-        showToast("Please select at least one PDF file", "error");
+        showToast("Please select at least one file", "error");
+        return;
+      }
+
+      // Validate file types
+      const supportedTypes = ['pdf', 'xlsx', 'xls'];
+      const invalidFiles = Array.from(files).filter(file => {
+        const ext = file.name.split('.').pop().toLowerCase();
+        return !supportedTypes.includes(ext);
+      });
+
+      if (invalidFiles.length > 0) {
+        showToast(`Unsupported file types: ${invalidFiles.map(f => f.name).join(', ')}`, "error");
         return;
       }
 
@@ -810,7 +1204,7 @@
       submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Uploading...';
       submitBtn.disabled = true;
 
-      const uploadedPdfIds = [];
+      const uploadedFileIds = [];
       let failedUploads = 0;
 
       for (const file of files) {
@@ -828,7 +1222,7 @@
 
           if (response.ok) {
             const data = await response.json();
-            uploadedPdfIds.push(data.pdf_id);
+            uploadedFileIds.push(data.pdf_id);
           } else {
             failedUploads++;
           }
@@ -842,9 +1236,9 @@
       e.target.reset();
       const fileInfo = fileUpload.querySelector(".file-info");
       fileInfo.innerHTML = `
-                <h3>Drag & Drop your PDFs here</h3>
+                <h3>Drag & Drop your documents here</h3>
                 <p>or click to browse files</p>
-                <p><small>You can upload up to 10 PDFs at once</small></p>
+                <p><small>Supported formats: PDF, Excel (.xlsx, .xls)</small></p>
             `;
       fileUpload.style.borderColor = "var(--green)";
 
@@ -852,11 +1246,11 @@
       submitBtn.innerHTML = originalBtnText;
       submitBtn.disabled = false;
 
-      if (uploadedPdfIds.length > 0) {
-        showToast(`Uploaded ${uploadedPdfIds.length} files. Processing in background.`);
-        // Add status monitoring for uploaded PDFs
-        monitorPdfProcessing(uploadedPdfIds);
-        // Refresh the list to show pending PDFs
+      if (uploadedFileIds.length > 0) {
+        showToast(`Uploaded ${uploadedFileIds.length} files. Processing in background.`);
+        // Add status monitoring for uploaded files
+        monitorPdfProcessing(uploadedFileIds);
+        // Refresh the list to show pending files
         fetchPDFs();
       }
 
@@ -951,11 +1345,11 @@
         );
 
         if (!response.ok) {
-          throw new Error("Failed to fetch PDFs");
+          throw new Error("Failed to fetch documents");
         }
 
         const data = await response.json();
-        const pdfs = data.pdfs;
+        const files = data.pdfs;
         const totalCount = data.total_count;
         const list = document.getElementById("pdf-list");
         const emptyState = document.getElementById("empty-state");
@@ -963,14 +1357,14 @@
 
         list.innerHTML = "";
 
-        if (pdfs.length === 0) {
+        if (files.length === 0) {
           emptyState.style.display = "block";
           emptyState.querySelector("h3").textContent = currentCollection
-            ? `No PDFs in collection "${currentCollection}"`
-            : "No PDFs found";
+            ? `No documents in collection "${currentCollection}"`
+            : "No documents found";
           emptyState.querySelector("p").textContent = currentCollection
-            ? "Upload PDFs to this collection"
-            : "Upload your first PDF to get started";
+            ? "Upload documents to this collection"
+            : "Upload your first document to get started";
           tableContainer.style.display = "none";
           return;
         }
@@ -978,14 +1372,14 @@
         emptyState.style.display = "none";
         tableContainer.style.display = "block";
 
-        pdfs.forEach((pdf, index) => {
+        files.forEach((file, index) => {
           const tr = document.createElement("tr");
           tr.style.animationDelay = `${index * 0.05}s`;
           tr.classList.add("animate-fade-in");
 
-          const collectionBadge = pdf.collection
+          const collectionBadge = file.collection
             ? `<span class="badge" style="background-color: var(--dark-green);">
-                             <i class="fas fa-layer-group"></i> ${pdf.collection}
+                             <i class="fas fa-layer-group"></i> ${file.collection}
                            </span>`
             : `<span class="badge" style="background-color: var(--gray); color: var(--black);">
                              <i class="fas fa-layer-group"></i> Default Collection
@@ -993,11 +1387,11 @@
 
           // Add status indicator
           const statusBadge =
-            pdf.status === "pending"
+            file.status === "pending"
               ? `<span class="badge" style="background-color: orange;">
                              <i class="fas fa-spinner fa-spin"></i> Processing
                            </span>`
-              : pdf.status === "error"
+              : file.status === "error"
               ? `<span class="badge" style="background-color: #f44336;">
                                  <i class="fas fa-exclamation-circle"></i> Error
                                </span>`
@@ -1005,29 +1399,36 @@
                                  <i class="fas fa-check"></i> Processed
                                </span>`;
 
+          // Add file type badge
+          const fileTypeDisplay = getFileTypeDisplay(file.file_type);
+          const fileTypeBadge = `<span class="badge" style="background-color: var(--yellow); color: var(--black);">
+                                     <i class="fas fa-tag"></i> ${fileTypeDisplay}
+                                   </span>`;
+
           tr.innerHTML = `
                         <td>
-                          <input type="checkbox" class="pdf-select" value="${pdf.id}" />
+                          <input type="checkbox" class="pdf-select" value="${file.id}" />
                         </td>
                         <td>
                           <div style="display: flex; align-items: center; gap: 10px;">
-                              <i class="fas fa-file-pdf" style="color: var(--green);"></i>
-                              ${pdf.filename}
+                              ${getFileIcon(file.filename, file.file_type)}
+                              ${file.filename}
                               ${statusBadge}
+                              ${fileTypeBadge}
                               ${collectionBadge}
                           </div>
                         </td>
-                        <td>${pdf.description || "<em>No description</em>"}</td>
-                        <td>${formatDate(pdf.upload_date)}</td>
-                        <td>${pdf.pages_indexed} / ${pdf.pages_total}</td>
+                        <td>${file.description || "<em>No description</em>"}</td>
+                        <td>${formatDate(file.upload_date)}</td>
+                        <td>${file.pages_indexed} / ${file.pages_total}</td>
                         <td class="actions">
-                            <button onclick="viewPDF(${pdf.id})" class="btn btn-view" ${pdf.status !== "processed" ? "disabled" : ""}>
+                            <button onclick="viewPDF(${file.id})" class="btn btn-view" ${file.status !== "processed" ? "disabled" : ""}>
                                 <i class="fas fa-eye"></i> View
                             </button>
-                            <button onclick="updatePDF(${pdf.id})" class="btn btn-update">
+                            <button onclick="updatePDF(${file.id})" class="btn btn-update">
                                 <i class="fas fa-edit"></i> Edit
                             </button>
-                            <button onclick="deletePDF(${pdf.id})" class="btn btn-delete">
+                            <button onclick="deletePDF(${file.id})" class="btn btn-delete">
                                 <i class="fas fa-trash"></i> Delete
                             </button>
                         </td>
@@ -1095,7 +1496,7 @@
           paginationControls.appendChild(nextButton);
         }
       } catch (error) {
-        showToast("Failed to load PDFs", "error");
+        showToast("Failed to load documents", "error");
         console.error(error);
       }
     }
@@ -1357,37 +1758,36 @@
 
         if (response.ok) {
           const collectionsData = await response.json();
-          const uploadSelect = document.getElementById("collection");
-          uploadSelect.innerHTML = '<option value="">Default Collection</option>';
-          const filterSelect = document.getElementById("collection-filter");
-          filterSelect.innerHTML = `
-                        <option value="">All Collections</option>
-                        <option value="default">Default Collection</option>
-                    `;
-          collectionsData.forEach((collection) => {
-            const uploadOption = document.createElement("option");
-            uploadOption.value = collection.name;
-            uploadOption.textContent = collection.name;
-            uploadSelect.appendChild(uploadOption);
+          
+          // Prepare options data for searchable dropdowns
+          const uploadOptions = collectionsData.map(collection => ({
+            value: collection.name,
+            text: collection.name
+          }));
+          
+          const filterOptions = [
+            { value: 'default', text: 'Default Collection' },
+            ...collectionsData.map(collection => ({
+              value: collection.name,
+              text: collection.name
+            }))
+          ];
 
-            const filterOption = document.createElement("option");
-            filterOption.value = collection.name;
-            filterOption.textContent = collection.name;
-            filterSelect.appendChild(filterOption);
-          });
+          // Update searchable dropdowns if they exist
+          if (collectionDropdown) {
+            collectionDropdown.updateOptions(uploadOptions);
+          }
+          
+          if (collectionFilterDropdown) {
+            collectionFilterDropdown.updateOptions(filterOptions);
+          }
         }
       } catch (error) {
         console.error("Failed to fetch collections:", error);
       }
     }
 
-    // Add function to filter by collection
-    function filterByCollection() {
-      const select = document.getElementById("collection-filter");
-      currentCollection = select.value;
-      currentPage = 1; // Reset to first page
-      fetchPDFs();
-    }
+    // Filter by collection is now handled by the searchable dropdown callback
 
     // Initial UI update
     updateUI();

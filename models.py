@@ -25,4 +25,5 @@ class PDF(Base):
     pages_total   = Column(Integer, default=0)
     pages_indexed = Column(Integer, default=0)
     collection = Column(String)
+    file_type = Column(String, default="pdf")  # New field to distinguish file types: pdf, xlsx, etc.
 

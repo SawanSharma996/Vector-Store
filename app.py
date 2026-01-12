@@ -3,7 +3,7 @@ from sqlalchemy.orm import Session
 from database import get_db, engine, Base
 from models import PDF, User
 from auth import get_current_user, UserCreate, authenticate_user, create_access_token, get_password_hash
-from pdf_processor import extract_text_from_pdf, split_text_into_chunks, generate_embeddings, store_in_qdrant
+from pdf_processor import extract_text_from_file, split_text_into_chunks, generate_embeddings, store_in_qdrant
 from qdrant_client import QdrantClient
 from qdrant_client.http import models as qmodels
 import os
@@ -33,6 +33,18 @@ class CollectionCreate(BaseModel):
 
 class CollectionUpdate(BaseModel):
     description: str
+
+# Define supported file types
+SUPPORTED_FILE_TYPES = {
+    ".pdf": "pdf",
+    ".xlsx": "xlsx",
+    ".xls": "xlsx"
+}
+
+def get_file_type(filename):
+    """Get the file type from filename extension"""
+    extension = os.path.splitext(filename)[1].lower()
+    return SUPPORTED_FILE_TYPES.get(extension, "unknown")
 
 @app.get("/")
 def read_root():
@@ -74,9 +86,9 @@ def login(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depend
     
 
 
-# PDF Management Endpoints
+# File Management Endpoints
 @app.post("/upload")
-async def upload_pdf(
+async def upload_file(
     background_tasks: BackgroundTasks,
     file: UploadFile = File(...),
     description: str = Form(None),
@@ -86,6 +98,14 @@ async def upload_pdf(
 ):
     print(f"Received upload request with collection: {collection}")  # Debug print
     
+    # Validate file type
+    file_type = get_file_type(file.filename)
+    if file_type == "unknown":
+        raise HTTPException(
+            status_code=400, 
+            detail=f"Unsupported file type. Supported types: {', '.join(SUPPORTED_FILE_TYPES.keys())}"
+        )
+    
     with tempfile.NamedTemporaryFile(delete=False, suffix=f"_{file.filename}") as temp_file:
         temp_path = temp_file.name
         chunk_size = 1024 * 1024  # 1MB chunks
@@ -93,36 +113,39 @@ async def upload_pdf(
             temp_file.write(chunk)
     
     try:
-        # Create PDF record with collection
-        pdf = PDF(
+        # Create file record with collection and file type
+        document = PDF(
             user_id=current_user.id,
             filename=file.filename,
             description=description,
             status="pending",
-            collection=collection  # Set the collection
+            collection=collection,
+            file_type=file_type
         )
-        db.add(pdf)
+        db.add(document)
         db.commit()
-        db.refresh(pdf)
+        db.refresh(document)
         
         # Schedule processing
         background_tasks.add_task(
-            process_pdf_in_background,
+            process_file_in_background,
             temp_path,
             file.filename,
             description,
             current_user.id,
-            pdf.id,
-            collection
+            document.id,
+            collection,
+            file_type
         )
         
         return JSONResponse(
             status_code=202,
             content={
-                "message": "PDF upload in progress",
-                "pdf_id": pdf.id,
+                "message": f"{file_type.upper()} upload in progress",
+                "pdf_id": document.id,
                 "status": "pending",
-                "collection": collection
+                "collection": collection,
+                "file_type": file_type
             }
         )
     except Exception as e:
@@ -131,7 +154,7 @@ async def upload_pdf(
         raise HTTPException(status_code=500, detail=f"Upload failed: {str(e)}")
 
 @app.get("/pdfs")
-def list_pdfs(
+def list_files(
     limit: int = 40,
     offset: int = 0,
     collection: str = None,
@@ -159,16 +182,17 @@ def list_pdfs(
     total_count = query.count()
     
     # Get paginated results
-    pdfs = query.offset(offset).limit(limit).all()
+    files = query.offset(offset).limit(limit).all()
     
     return {
-        "pdfs": [{"id": pdf.id, "filename": pdf.filename, "description": pdf.description, 
-                  "upload_date": pdf.upload_date.isoformat(), 
-                  "status": pdf.status, 
-                  "pages_total": pdf.pages_total,
-                  "pages_indexed": pdf.pages_indexed,
-                  "collection": pdf.collection,
-                  "error_message": pdf.error_message} for pdf in pdfs],
+        "pdfs": [{"id": file.id, "filename": file.filename, "description": file.description, 
+                  "upload_date": file.upload_date.isoformat(), 
+                  "status": file.status, 
+                  "pages_total": file.pages_total,
+                  "pages_indexed": file.pages_indexed,
+                  "collection": file.collection,
+                  "file_type": file.file_type if hasattr(file, 'file_type') else "pdf",
+                  "error_message": file.error_message} for file in files],
         "total_count": total_count
     }
 
@@ -240,41 +264,42 @@ def delete_pdf(pdf_id: int, db: Session = Depends(get_db),
     db.commit()
     return {"message": "PDF deleted successfully"}
 
-# Update the process_pdf_in_background function to be asynchronous and handle large files better
-async def process_pdf_in_background(
+# Update the process_file_in_background function to handle both PDFs and Excel files
+async def process_file_in_background(
     temp_path: str,
     filename: str,
     description: str,
     user_id: int,
-    pdf_id: int,
-    collection: str = None
+    file_id: int,
+    collection: str = None,
+    file_type: str = "pdf"
 ):
     db = None
     try:
         # Update status to "processing" to give more detailed feedback
         db = next(get_db())
-        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
-        if pdf:
-            pdf.status = "processing"
+        file_record = db.query(PDF).filter(PDF.id == file_id).first()
+        if file_record:
+            file_record.status = "processing"
             db.commit()
         
         # Extract text with progress tracking
-        text = await extract_text_from_pdf(temp_path)
+        pages = await extract_text_from_file(temp_path)
         
         # Update status to show progress
         db = next(get_db())
-        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
-        if pdf:
-            pdf.status = "chunking"
+        file_record = db.query(PDF).filter(PDF.id == file_id).first()
+        if file_record:
+            file_record.status = "chunking"
             db.commit()
-        pages = await extract_text_from_pdf(temp_path)    
-        chunks = split_text_into_chunks(text)
+        
+        chunks = split_text_into_chunks(pages)
         
         # Update status again
         db = next(get_db())
-        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
-        if pdf:
-            pdf.status = "embedding"
+        file_record = db.query(PDF).filter(PDF.id == file_id).first()
+        if file_record:
+            file_record.status = "embedding"
             db.commit()
             
         openai_client = OpenAI(api_key=config.OPENAI_API_KEY)
@@ -282,9 +307,9 @@ async def process_pdf_in_background(
         
         # Final embedding storage
         db = next(get_db())
-        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
-        if pdf:
-            pdf.status = "storing"
+        file_record = db.query(PDF).filter(PDF.id == file_id).first()
+        if file_record:
+            file_record.status = "storing"
             db.commit()
             
         qdrant_client = QdrantClient(url=config.QDRANT_URL)
@@ -309,7 +334,7 @@ async def process_pdf_in_background(
             store_in_qdrant(
                 batch_chunks, 
                 batch_embeddings, 
-                pdf_id, 
+                file_id, 
                 user_id, 
                 filename, 
                 description, 
@@ -320,27 +345,36 @@ async def process_pdf_in_background(
         
         # Update status and collection in database
         db = next(get_db())
-        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
-        if pdf:
-            pdf.status = "processed"
-            pdf.pages_total    = len(pages)
-            pdf.pages_indexed  = len({               # distinct pages we actually stored
-            int(c.split(":",1)[0].split()[1])    # pull “7” out of “Page 7:\n…”
-            for c in chunks
-        })
-            pdf.collection = collection  # Make sure to update the collection in the database
+        file_record = db.query(PDF).filter(PDF.id == file_id).first()
+        if file_record:
+            file_record.status = "processed"
+            file_record.pages_total = len(pages)
+            
+            # Calculate pages indexed based on file type
+            if file_type == "pdf":
+                file_record.pages_indexed = len({
+                    int(c.split(":",1)[0].split()[1]) for c in chunks
+                    if "Page" in c.split(":",1)[0]
+                })
+            else:  # Excel files
+                file_record.pages_indexed = len({
+                    int(c.split(":",1)[0].split()[1]) for c in chunks
+                    if "Sheet" in c.split(":",1)[0]
+                })
+                
+            file_record.collection = collection
             db.commit()
             
     except Exception as e:
         # Log the error
-        print(f"Error processing PDF {filename}: {str(e)}")
+        print(f"Error processing file {filename}: {str(e)}")
         # Update status in database
         if db is None:
             db = next(get_db())
-        pdf = db.query(PDF).filter(PDF.id == pdf_id).first()
-        if pdf:
-            pdf.status = "error"
-            pdf.error_message = str(e)
+        file_record = db.query(PDF).filter(PDF.id == file_id).first()
+        if file_record:
+            file_record.status = "error"
+            file_record.error_message = str(e)
             db.commit()
     finally:
         # Clean up the temp file
